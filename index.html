@@ -532,363 +532,685 @@ h3 {
   .brand h1 { font-size:20px }
   .stat-n { font-size:28px }
 }
+
+/* v2 additions */
+.panel[hidden] { display:none !important }
+.panel:not([hidden]) { display:block }
+.nav-btn:focus-visible, .btn:focus-visible, .ws:focus-visible, .chip:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent-3); outline-offset: 2px;
+}
+.kind-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px }
+.kind {
+  display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:20px;
+  font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  border:1px solid var(--border-2); background:var(--bg-inset); color:var(--fg-2);
+}
+.kind::before { content:''; width:7px; height:7px; border-radius:50%; background:currentColor }
+.k-synth { color:var(--amber-fg); border-color:rgba(245,158,11,0.3); background:var(--amber-soft) }
+.k-prop { color:var(--accent-fg); border-color:rgba(59,130,246,0.3); background:var(--accent-soft) }
+.k-pilot { color:var(--green-fg); border-color:rgba(34,197,94,0.3); background:var(--green-soft) }
+.k-model { color:var(--purple); border-color:rgba(167,139,250,0.3); background:var(--purple-soft) }
+
+.counts { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-bottom:24px }
+.count-card { padding:16px 18px; border-radius:var(--radius-lg); border:1px solid var(--border-2); background:var(--bg-glass) }
+.count-sym { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent-fg) }
+.count-name { font-size:13px; font-weight:600; color:var(--fg); margin-top:2px }
+.count-desc { font-size:12px; color:var(--fg-3); margin-top:4px; line-height:1.55 }
+
+.alert-blue {
+  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.05));
+  border-color: rgba(59,130,246,0.3); color:var(--fg-2);
+}
+.alert-blue .alert-title { color:var(--accent-fg) }
+
+.flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:6px 0 4px }
+.flow-step {
+  padding:8px 12px; border-radius:10px; font-size:12px; font-weight:600; color:var(--fg);
+  background:var(--bg-raised); border:1px solid var(--border-2);
+}
+.flow-arrow { color:var(--fg-muted); font-size:14px }
+
+.tag {
+  display:inline-block; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; border:1px solid transparent;
+}
+.t-pub { background:var(--green-soft); color:var(--green-fg); border-color:rgba(34,197,94,0.25) }
+.t-ass { background:var(--purple-soft); color:var(--purple); border-color:rgba(167,139,250,0.25) }
+.t-quote { background:var(--amber-soft); color:var(--amber-fg); border-color:rgba(245,158,11,0.25) }
+.t-rate { background:var(--accent-soft); color:var(--accent-fg); border-color:rgba(59,130,246,0.25) }
+.t-off { background:var(--bg-inset); color:var(--fg-3); border-color:var(--border-2) }
+
+a { color:var(--accent-fg) }
+.src { font-size:11px; color:var(--fg-muted) }
+.src a { color:var(--fg-3) }
+
+/* Buttons and chips */
+.btn {
+  font-family:var(--font); font-size:12.5px; font-weight:600; cursor:pointer;
+  padding:9px 14px; border-radius:10px; border:1px solid var(--border-2);
+  background:var(--bg-raised); color:var(--fg); transition: all .2s ease; min-height:38px;
+}
+.btn:hover { border-color:var(--border-glow); box-shadow:var(--shadow-glow) }
+.btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; border-color:transparent }
+.btn-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+.chip {
+  font-family:var(--font); font-size:12px; font-weight:600; cursor:pointer;
+  padding:7px 12px; border-radius:20px; border:1px solid var(--border-2);
+  background:var(--bg-inset); color:var(--fg-3); min-height:34px;
+}
+.chip[aria-pressed="true"] { background:var(--accent-soft); color:var(--accent-fg); border-color:rgba(59,130,246,0.35) }
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center; margin-bottom:16px }
+
+/* Interactive workspace cards */
+button.ws { text-align:left; width:100%; cursor:pointer; font-family:var(--font); color:var(--fg) }
+.ws[aria-pressed="true"] { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), var(--shadow-glow) }
+.ws-ok::after { background: linear-gradient(90deg, var(--green), var(--cyan)) }
+.ws-infra::after { background: linear-gradient(90deg, var(--red), #f97316) }
+.ws-own::after { background: linear-gradient(90deg, var(--amber), #f97316) }
+.ws-unk::after { background: var(--fg-muted) }
+.dims { display:grid; grid-template-columns:auto 1fr; gap:3px 10px; margin-top:10px; font-size:11.5px }
+.dims dt { color:var(--fg-muted) }
+.dims dd { margin:0; color:var(--fg-2); font-family:var(--mono); font-size:11px }
+.d-up { color:var(--green-fg) !important }
+.d-warn { color:var(--amber-fg) !important }
+.d-bad { color:var(--red-fg) !important }
+
+.detail { margin-top:16px }
+.detail-head { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:center }
+.detail-title { font-family:var(--mono); font-size:16px; font-weight:700 }
+.ev { font-size:12px; color:var(--fg-3); padding:6px 0; border-bottom:1px dashed var(--border-2) }
+.ev:last-child { border-bottom:none }
+.ev b { color:var(--fg-2); font-weight:600 }
+.sim { font-size:10px; font-weight:700; letter-spacing:.05em; color:var(--amber-fg); text-transform:uppercase }
+
+.inc { display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:start; padding:14px 0; border-bottom:1px solid var(--border) }
+.inc:last-child { border-bottom:none }
+.sev { font-family:var(--mono); font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px }
+.sev-1 { background:var(--red-soft); color:var(--red-fg) }
+.sev-2 { background:var(--amber-soft); color:var(--amber-fg) }
+.sev-3 { background:var(--accent-soft); color:var(--accent-fg) }
+.inc-state { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-3) }
+
+.log { font-family:var(--mono); font-size:11.5px; color:var(--fg-2); max-height:240px; overflow:auto; padding:12px; border-radius:var(--radius); background:var(--bg-inset); border:1px solid var(--border-2); white-space:pre-wrap; word-break:break-word }
+textarea.log { width:100%; min-height:160px; resize:vertical }
+
+/* Calculator v2 */
+.calc-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:14px; align-items:start }
+@media(max-width:860px) { .calc-grid { grid-template-columns:1fr } }
+.calc-sub { font-size:11px; color:var(--fg-muted); margin-top:5px; line-height:1.5 }
+.check-row { display:flex; gap:10px; align-items:center; font-size:13px; color:var(--fg-2); cursor:pointer }
+.check-row input { width:18px; height:18px; accent-color: var(--accent) }
+.cl { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px }
+.cl-n { color:var(--fg-2) }
+.cl-p { color:var(--fg); font-weight:600; font-family:var(--mono); text-align:right }
+.cl-note { grid-column:1 / -1; font-size:11px; color:var(--fg-muted) }
+.warn-box { margin-top:12px; padding:12px 14px; border-radius:var(--radius); font-size:12.5px; background:var(--red-soft); color:var(--red-fg); border:1px solid rgba(239,68,68,0.3) }
+.opt-box { margin-top:10px; padding:14px; border-radius:var(--radius); border:1px dashed var(--border-2); background:var(--bg-inset) }
+.sub-total { display:flex; justify-content:space-between; gap:12px; padding:14px 0 6px; font-size:14px; font-weight:700 }
+.sub-total span:last-child { font-family:var(--mono) }
+td.num, th.num { text-align:right; font-family:var(--mono) }
+
+.phase { display:grid; grid-template-columns:44px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--border) }
+.phase:last-child { border-bottom:none }
+.phase-n { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700; color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2)) }
+.phase-t { font-size:14px; font-weight:700; color:var(--fg) }
+.phase-d { font-size:12.5px; color:var(--fg-3); margin-top:3px }
+.phase-g { font-size:12px; color:var(--green); margin-top:4px; font-weight:500 }
+
+.price-hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-bottom:16px }
+.ph { padding:18px; border-radius:var(--radius-lg); border:1px solid var(--border-2); background:var(--bg-glass) }
+.ph-v { font-size:26px; font-weight:800; font-family:var(--mono); color:var(--fg) }
+.ph-l { font-size:12px; color:var(--fg-3); margin-top:4px; line-height:1.5 }
+
+.tbl-wrap > table { min-width:560px }
+.tbl-wrap { -webkit-overflow-scrolling:touch }
+ul.clean { margin:0; padding-left:18px; font-size:13px; color:var(--fg-2) }
+ul.clean li { padding:3px 0 }
+.min0 { min-width:0 }
+@media(max-width:640px) {
+  .inc { grid-template-columns:auto 1fr }
+  .inc .btn-row { grid-column:1 / -1 }
+  td, th { padding:10px 12px }
+}
 </style>
 </head>
 <body>
 <div class="bg-mesh"></div>
 
-<div class="disclaimer">Synthetic design prototype. No live LinkedIn accounts connected. No third-party LinkedIn messages sent. Vendor pricing and legal permissions require validation.</div>
+<div class="disclaimer">Independent concept prepared for Aviovis Group. Synthetic test data only. No access to Aviovis systems, no LinkedIn accounts connected, no messages sent. Vendor prices marked "quote" need confirmation.</div>
 
 <div class="wrap">
 <header class="site-header">
 <div class="header-top">
 <div class="brand">
-<div class="brand-mark">CN</div>
+<div class="brand-mark" aria-hidden="true">CN</div>
 <div>
 <h1>LinkedIn Operations Architecture</h1>
-<p>Technical Infrastructure for 100+ Profile Workspaces</p>
+<p>Infrastructure plan for 100, 250 and 500 profile workspaces</p>
 </div>
 </div>
 <div class="pills">
-<span class="pill pill-blue">Prototype v1.0</span>
-<span class="pill pill-green">For Aviovis Group</span>
+<span class="pill pill-blue">Architecture preview v2</span>
+<span class="pill pill-green">Independent concept</span>
 </div>
 </div>
 </header>
 </div>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Sections">
 <div class="wrap">
 <div class="nav-inner" role="tablist" id="tabs">
-<button class="nav-btn" role="tab" aria-selected="true" data-tab="overview">Architecture</button>
-<button class="nav-btn" role="tab" data-tab="matrix">Decision Matrix</button>
-<button class="nav-btn" role="tab" data-tab="dashboard">Dashboard</button>
-<button class="nav-btn" role="tab" data-tab="calculator">Cost Calculator</button>
-<button class="nav-btn" role="tab" data-tab="pilot">Pilot Plan</button>
-<button class="nav-btn" role="tab" data-tab="roles">Role Matrix</button>
+<button class="nav-btn" role="tab" id="t-overview" aria-controls="p-overview" aria-selected="true" tabindex="0" data-tab="overview">Architecture</button>
+<button class="nav-btn" role="tab" id="t-matrix" aria-controls="p-matrix" aria-selected="false" tabindex="-1" data-tab="matrix">Decisions</button>
+<button class="nav-btn" role="tab" id="t-dashboard" aria-controls="p-dashboard" aria-selected="false" tabindex="-1" data-tab="dashboard">Dashboard</button>
+<button class="nav-btn" role="tab" id="t-calculator" aria-controls="p-calculator" aria-selected="false" tabindex="-1" data-tab="calculator">Cost Model</button>
+<button class="nav-btn" role="tab" id="t-pilot" aria-controls="p-pilot" aria-selected="false" tabindex="-1" data-tab="pilot">Pilot and Rollout</button>
+<button class="nav-btn" role="tab" id="t-roles" aria-controls="p-roles" aria-selected="false" tabindex="-1" data-tab="roles">Roles and Security</button>
 </div>
 </div>
 </nav>
 
-<div class="wrap">
+<main class="wrap">
 
 <!-- ARCHITECTURE -->
-<section class="panel" data-active id="p-overview">
-<div class="section-accent"></div>
+<section class="panel" id="p-overview" role="tabpanel" aria-labelledby="t-overview" tabindex="0">
+<div class="kind-row"><span class="kind k-prop">Proposed design</span><span class="kind k-pilot">Validated in pilot</span></div>
 <h2 class="panel-title">Architecture Overview</h2>
-<p class="panel-desc">Workspace operations control plane for up to 100 assigned workspaces, with capacity model to 250 and 500 after legal/identity feasibility confirmed. Three counts matter: N = registered workspaces (100/250/500), C = peak simultaneously active (measure in pilot), U = human operators (not equal to N).</p>
+<p class="panel-desc">A control plane for profile workspaces: where they run, who can open them, how sessions are handled, and how problems surface before they stop the team. Nothing here is deployed yet. The paid pilot builds it on real test infrastructure and measures it.</p>
 
-<div class="alert-card alert-amber">
-<div class="alert-title">Owner-Led Authentication Model</div>
-<div class="alert-body">LinkedIn User Agreement prohibits using another person's account via shared credentials or cookies. Infrastructure team manages hosts, not LinkedIn credentials. Profile owners handle their own login, 2FA, verification and appeals personally.</div>
+<div class="counts">
+<div class="count-card"><div class="count-sym">N</div><div class="count-name">Registered workspaces</div><div class="count-desc">100, 250 or 500. Drives storage and stored profile licences.</div></div>
+<div class="count-card"><div class="count-sym">C</div><div class="count-name">Peak active at once</div><div class="count-desc">Drives servers and runtime licences. Measured in the pilot, never assumed as a fixed percentage.</div></div>
+<div class="count-card"><div class="count-sym">U</div><div class="count-name">Named human operators</div><div class="count-desc">Drives seats, identity, training and support. Not equal to N.</div></div>
+<div class="count-card"><div class="count-sym">O</div><div class="count-name">Profile owners</div><div class="count-desc">The real account holder of each profile. May or may not be the same person as the operator.</div></div>
 </div>
 
+<div class="alert-card alert-blue">
+<div class="alert-title">First design gate: is each profile used by its own owner?</div>
+<div class="alert-body">LinkedIn's User Agreement keeps each account personal and does not allow one person to use another member's account. Owners handling their own login and 2FA is a good boundary, but it does not by itself make a workflow compliant. If a separate operator would act inside an owner's profile, that operating model has to be reviewed before production. We settle this on Day 1 of the pilot, before any build. <span class="src"><a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener">LinkedIn User Agreement</a></span></div>
+</div>
+
+<h3>Six Layers</h3>
 <div class="layer-stack">
-<div class="layer-row"><div class="layer-num">5</div><div><div class="layer-title">Central Dashboard</div><div class="layer-body">Web-based with owner/operator/admin views. Shows workspace host health with provenance. Does not show live LinkedIn account status (no authorized feed). Statuses: WORKSPACE_READY, OWNER_ACTION_REQUIRED, INFRA_DEGRADED, SESSION_STATUS_NOT_VERIFIED, OWNER_REPORTED_RESTRICTED.</div></div></div>
-<div class="layer-row"><div class="layer-num">4</div><div><div class="layer-title">Security and Access Control</div><div class="layer-body">RBAC with 5 roles. Infrastructure secrets in managed vault. Personal LinkedIn credentials stay with owner only. Audit log with evidence source.</div></div></div>
-<div class="layer-row"><div class="layer-num">3</div><div><div class="layer-title">Network Connectivity</div><div class="layer-body">Corporate remote access via WireGuard VPN. Proxy decision is conditional (job asks whether needed). Three options: no proxy, residential proxy where approved, ISP static proxy.</div></div></div>
-<div class="layer-row"><div class="layer-num">2</div><div><div class="layer-title">Browser Workspace Isolation</div><div class="layer-body">Workspace management tool (GoLogin, Multilogin or alternative). Each workspace uniquely configured. Clear owner involvement points for login, re-auth, 2FA, verification.</div></div></div>
-<div class="layer-row"><div class="layer-num">1</div><div><div class="layer-title">Cloud Hosting</div><div class="layer-body">Hetzner Cloud EU (Finland/Germany), closest to Lithuania. OS decided in pilot. Batch scheduling: profiles do not all run simultaneously.</div></div></div>
+<div class="layer-row"><div class="layer-num">1</div><div class="min0"><div class="layer-title">Hosting</div><div class="layer-body">EU cloud hosts (Hetzner Germany or Finland are the reference prices). Cloud, local or hybrid is compared in Decisions. Host size is chosen from measured CPU, RAM, disk and bandwidth, plus one spare host so a single failure does not stop every workspace.</div></div></div>
+<div class="layer-row"><div class="layer-num">2</div><div class="min0"><div class="layer-title">Workspace runtime</div><div class="layer-body">One isolated browser workspace per profile with its own storage. Runs either on client owned hosts (local launches) or as vendor cloud launches, which are limited per plan. Stored profiles, running workspaces and cloud launches are counted separately.</div></div></div>
+<div class="layer-row"><div class="layer-num">3</div><div class="min0"><div class="layer-title">Identity and access</div><div class="layer-body">Company SSO with MFA for every operator and admin, workspace assignment per operator, and an audit log of who opened what. Infrastructure secrets live in a vault. Personal LinkedIn passwords and 2FA codes never reach infrastructure staff.</div></div></div>
+<div class="layer-row"><div class="layer-num">4</div><div class="min0"><div class="layer-title">Network</div><div class="layer-body">Baseline without any proxy: SSO, MFA, firewall, TLS and a WireGuard VPN for admin access only. A proxy is added only where a specific approved need exists. It is not a security control, and the location written on a LinkedIn profile is a separate matter from the network path.</div></div></div>
+<div class="layer-row"><div class="layer-num">5</div><div class="min0"><div class="layer-title">Monitoring and status</div><div class="layer-body">Host agents feed metrics and events into an alerting pipeline and the dashboard. Host health, workspace runtime and member session are tracked as separate fields. Member session stays UNKNOWN unless the owner confirms it or an approved feed exists.</div></div></div>
+<div class="layer-row"><div class="layer-num">6</div><div class="min0"><div class="layer-title">Backup and recovery</div><div class="layer-body">Encrypted per workspace backups with keys owned by Aviovis, a restore drill in the pilot, and recovery targets (RPO and RTO) agreed with you rather than promised up front.</div></div></div>
 </div>
 
-<h3>Authentication Flow</h3>
+<h3>Monitoring Data Flow</h3>
 <div class="card">
-<div class="tbl-wrap">
+<div class="flow" aria-label="Monitoring data flow">
+<span class="flow-step">Host agent</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Authenticated ingest</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Metrics and event store</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Alert rules</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Dashboard</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Acknowledge or escalate</span><span class="flow-arrow" aria-hidden="true">&rarr;</span>
+<span class="flow-step">Audit export</span>
+</div>
+<p class="calc-sub" style="margin-top:12px">Reference stack: Prometheus node exporter on each host, Alertmanager for routing, Grafana or a small custom view for operators. Every event carries timestamp, workspace, severity, source and a link to its runbook step. Final tool choice is confirmed in the pilot.</p>
+</div>
+
+<h3>Session Lifecycle</h3>
+<div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Scenario</th><th>Who Handles</th><th>Notes</th></tr></thead>
+<thead><tr><th>Stage</th><th>Who acts</th><th>What the system records</th></tr></thead>
 <tbody>
-<tr><td>Initial login + 2FA setup</td><td style="color:var(--amber);font-weight:600">Profile Owner</td><td>LinkedIn rules: credentials with owner</td></tr>
-<tr><td>Re-authentication after expiry</td><td style="color:var(--amber);font-weight:600">Profile Owner</td><td>Infra team does not store 2FA seeds</td></tr>
-<tr><td>2FA verification code</td><td style="color:var(--amber);font-weight:600">Profile Owner</td><td>No third-party personal TOTP seeds</td></tr>
-<tr><td>CAPTCHA / verification</td><td style="color:var(--amber);font-weight:600">Profile Owner</td><td>LinkedIn identity verification</td></tr>
-<tr><td>Restriction appeal</td><td style="color:var(--amber);font-weight:600">Profile Owner</td><td>Personal account action</td></tr>
-<tr><td>Workspace provisioning</td><td style="color:var(--green);font-weight:600">Infra Team</td><td>Host, OS, browser app maintenance</td></tr>
-<tr><td>Proxy / network config</td><td style="color:var(--green);font-weight:600">Infra Team</td><td>Connectivity management</td></tr>
-<tr><td>Monitoring / alerts</td><td style="color:var(--green);font-weight:600">Infra Team</td><td>Health metrics, attention queue</td></tr>
+<tr><td>Initial login and 2FA setup</td><td>Profile owner, personally</td><td>Owner confirms workspace is set up. Session marked OWNER_CONFIRMED with date.</td></tr>
+<tr><td>Normal use</td><td>Owner, or an approved operator if the Day 1 gate allows it</td><td>Host and runtime health only. No reading of LinkedIn content.</td></tr>
+<tr><td>Session expires or a challenge appears</td><td>Noticed by the user of the workspace</td><td>Session moved to OWNER_ACTION_REQUIRED. Task created for the owner.</td></tr>
+<tr><td>Re-authentication</td><td>Profile owner, personally</td><td>Owner closes the task. No password or OTP passes through infrastructure staff.</td></tr>
+<tr><td>Restriction or verification issue</td><td>Profile owner handles the appeal</td><td>Owner reported status with timestamp. Never detected by a bot.</td></tr>
+<tr><td>No confirmation for a set period</td><td>Nobody</td><td>Session returns to UNKNOWN. Host being up never means the account is fine.</td></tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 
-<!-- DECISION MATRIX -->
-<section class="panel" id="p-matrix">
-<div class="section-accent"></div>
-<h2 class="panel-title">Decision Matrix</h2>
-<p class="panel-desc">All prices from vendor sources (October 2026). GoLogin prices conflict between surfaces. Exact pricing requires checkout/quote. Client has not specified any particular tool.</p>
+<!-- DECISIONS -->
+<section class="panel" id="p-matrix" role="tabpanel" aria-labelledby="t-matrix" tabindex="0">
+<div class="kind-row"><span class="kind k-prop">Proposed design</span><span class="kind k-model">Published prices, checked 29 Oct 2026</span></div>
+<h2 class="panel-title">Decisions</h2>
+<p class="panel-desc">Each decision lists the options, what evidence settles it and our current lean. No tool was requested in your brief, so vendor products appear as options, not as a fixed stack.</p>
 
-<h3>Hosting Options</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>SKU</th><th>Specs</th><th>EUR/mo</th><th>USD/mo</th><th>Notes</th></tr></thead>
+<thead><tr><th>Decision</th><th>Options</th><th>Settled by</th><th>Current lean</th></tr></thead>
 <tbody>
-<tr><td>CCX13</td><td>4 dedicated vCPU, 16 GB</td><td>&euro;42.99</td><td>$50.49</td><td>Small pilot</td></tr>
-<tr style="background:var(--accent-soft)"><td><strong>CCX23</strong></td><td><strong>8 dedicated vCPU, 32 GB</strong></td><td><strong>&euro;85.99</strong></td><td><strong>$101.49</strong></td><td><strong>Pilot candidate</strong></td></tr>
-<tr><td>CCX33</td><td>8 dedicated vCPU, 64 GB</td><td>&euro;138.49</td><td>$162.99</td><td>More RAM, same CPU</td></tr>
-<tr><td>CCX43</td><td>16 dedicated vCPU, 64 GB</td><td>&euro;275.99</td><td>$325.49</td><td>Production candidate</td></tr>
-<tr><td>CCX53</td><td>32 dedicated vCPU, 128 GB</td><td>&euro;533.49</td><td>$629.49</td><td>High scale</td></tr>
+<tr><td>Hosting</td><td>EU cloud, local office hardware, hybrid</td><td>Remote access needs, security, data residency, cost</td><td>EU cloud</td></tr>
+<tr><td>Runtime OS</td><td>Linux desktop with browser, Windows remote desktop</td><td>Tools your team must run, licensing, measured load</td><td>Linux unless a required tool is Windows only</td></tr>
+<tr><td>Session execution</td><td>Client hosted workspaces, vendor cloud launches</td><td>Peak concurrency C against plan limits</td><td>Client hosted</td></tr>
+<tr><td>Who uses each profile</td><td>Owner only, owner plus approved operator</td><td>Day 1 gate and platform terms</td><td>Owner only until reviewed</td></tr>
+<tr><td>Connectivity</td><td>Secure baseline, admin VPN, optional proxy</td><td>A documented need, region, traffic</td><td>Baseline plus admin VPN</td></tr>
+<tr><td>Status source</td><td>Host agent, owner report, approved integration</td><td>Which signals are actually permitted</td><td>Host agent plus owner report</td></tr>
+<tr><td>Monitoring</td><td>Prometheus and Grafana, or a managed service</td><td>Your team's skills, retention, cost</td><td>Open source, self hosted</td></tr>
 </tbody>
 </table>
 </div></div>
-<div class="note">Source: Hetzner official (June 2026 adjustment). Prices exclude IPv4, VAT, backups. CCX line uses dedicated AMD vCPU. Server capacity per-workspace is unbenchmarked.</div>
 
-<h3>Operating System Options</h3>
+<h3>Hosting Location</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Option</th><th>Pros</th><th>Cons</th><th>Cost Impact</th></tr></thead>
+<thead><tr><th>Option</th><th>Strengths</th><th>Weaknesses</th></tr></thead>
 <tbody>
-<tr style="background:var(--green-soft)"><td><strong>Linux (Ubuntu 22.04 LTS)</strong></td><td>No OS license cost, Hetzner native, lighter resource footprint</td><td>Some automation tools may require compatibility testing</td><td>Included in Hetzner price</td></tr>
-<tr><td>Windows (Azure VDI)</td><td>Familiar UI for operators, wider browser tool compatibility</td><td>Separate licensing cost structure, does not transplant to arbitrary Hetzner Linux VPS</td><td>Azure VDI licensing required (separate assessment)</td></tr>
+<tr><td><strong>EU cloud</strong></td><td>Remote access from anywhere, fast to add hosts, EU data residency, snapshots</td><td>Monthly cost, provider dependency</td></tr>
+<tr><td>Local office hardware</td><td>No monthly host fee, full physical control</td><td>Upfront hardware, power and internet risk, harder remote access, no quick scale</td></tr>
+<tr><td>Hybrid</td><td>Keeps existing machines, cloud for growth</td><td>Two environments to secure and monitor</td></tr>
 </tbody>
 </table>
 </div></div>
-<div class="note">Client Requirement 1 asks for "Windows/Linux options." OS decided in pilot based on workspace tool compatibility and app requirements. Windows licensing (Azure Virtual Desktop) is a separate cost structure.</div>
 
-<h3>Browser Workspace Tools</h3>
+<h3>Host Sizes (Hetzner, Germany and Finland)</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Tool</th><th>100 Profiles</th><th>Cloud Launches</th><th>Seats</th><th>Status</th></tr></thead>
+<thead><tr><th>SKU</th><th>Specs</th><th class="num">EUR/mo</th><th class="num">USD/mo</th><th>Fit</th></tr></thead>
 <tbody>
-<tr><td>GoLogin Pro</td><td>~$19.50/mo annual</td><td>1 concurrent</td><td>0 extra</td><td style="color:var(--amber);font-weight:500">Price conflicts. Quote required.</td></tr>
-<tr><td>GoLogin Business (300)</td><td>~$49.50/mo annual</td><td>2 concurrent</td><td>1</td><td style="color:var(--amber);font-weight:500">Same conflict</td></tr>
-<tr><td>GoLogin Enterprise (1000)</td><td>~$89.50/mo annual</td><td>3 concurrent</td><td>1</td><td style="color:var(--amber);font-weight:500">Same conflict</td></tr>
-<tr><td>Multilogin Business</td><td>from $26.67/mo ($320/yr)</td><td>N/A</td><td>Unlimited</td><td style="color:var(--fg-3)">Slider tiers unconfirmed</td></tr>
-<tr><td>AdsPower Pro</td><td>$36/mo ($28.80 annual)</td><td>N/A</td><td>Per plan</td><td style="color:var(--fg-3)">Third-party source</td></tr>
+<tr><td>CCX13</td><td>4 dedicated vCPU, 16 GB</td><td class="num">42.99</td><td class="num">50.49</td><td>Monitoring, small tests</td></tr>
+<tr><td>CCX23</td><td>8 dedicated vCPU, 32 GB</td><td class="num">85.99</td><td class="num">101.49</td><td>Pilot host</td></tr>
+<tr><td>CCX33</td><td>8 dedicated vCPU, 64 GB</td><td class="num">138.49</td><td class="num">162.99</td><td>If RAM is the limit</td></tr>
+<tr><td>CCX43</td><td>16 dedicated vCPU, 64 GB</td><td class="num">275.99</td><td class="num">325.49</td><td>If CPU is the limit</td></tr>
+<tr><td>CCX53</td><td>32 dedicated vCPU, 128 GB</td><td class="num">533.49</td><td class="num">629.49</td><td>Fewer, larger hosts</td></tr>
 </tbody>
 </table>
 </div></div>
-<div class="note">Anti-detect browsers are vendor products. Their marketing is not LinkedIn approval. Cloud launches (concurrent running) and stored profiles are different counts.</div>
+<div class="note">Prices effective 15 June 2026, excluding IPv4, VAT and backups. <a href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/" target="_blank" rel="noopener">Hetzner price adjustment</a>. Which size wins depends on measured CPU and RAM per workspace, so none is chosen before the pilot.</div>
 
-<h3>LinkedHelper 2 Pro</h3>
+<h3>Operating System</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Config</th><th>Monthly</th><th>Annual (45% off)</th><th>+ Bulk (40%)</th><th>Stacked/mo</th></tr></thead>
+<thead><tr><th>Option</th><th>Strengths</th><th>Weaknesses</th><th>Licence cost</th></tr></thead>
 <tbody>
-<tr><td>Per license</td><td>$45.00</td><td>$24.75</td><td>x 0.60</td><td>$14.85</td></tr>
-<tr><td>20 concurrent</td><td>$900</td><td>$495</td><td>x 0.80 (20%)</td><td>$396 equiv</td></tr>
-<tr><td>100 concurrent</td><td>$4,500</td><td>$2,475</td><td>x 0.60 (40%)</td><td>$1,485 equiv</td></tr>
+<tr><td>Linux desktop (current LTS) with browser</td><td>No OS licence, lighter, easy to automate host setup</td><td>Some desktop tools are Windows only</td><td>None</td></tr>
+<tr><td>Windows Server remote desktop</td><td>Familiar for operators, widest tool support</td><td>Heavier per user, more patching</td><td>Windows Server plus per user remote desktop licences, quote required</td></tr>
 </tbody>
 </table>
 </div></div>
-<div class="note">Annual + bulk discounts confirmed to stack (vendor official). Desktop app runs locally. "Cloud Storage" = data storage in USA, not execution. Annual requires upfront payment.</div>
+<div class="note">Both options are compared on the same EU hosts so the numbers are like for like. Required tools decide this, not preference.</div>
 
-<h3>Network / Proxy Options</h3>
+<h3>Browser Workspace Software</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Option</th><th>Description</th><th>Cost</th><th>When</th></tr></thead>
+<thead><tr><th>Vendor</th><th>What is published</th><th>Concurrent cloud launches</th><th>Status</th></tr></thead>
 <tbody>
-<tr style="background:var(--green-soft)"><td><strong>A: No Proxy</strong></td><td>Legitimate corporate access</td><td>$0</td><td>Geographic distribution not required</td></tr>
-<tr><td>B: Residential</td><td>Decodo metered bandwidth</td><td>$2.00 to $4.00/GB</td><td>Approved and necessary</td></tr>
-<tr><td>C: ISP Static</td><td>Consistent per-workspace IP</td><td>Quote needed</td><td>Consistent IP required</td></tr>
+<tr><td>GoLogin</td><td>Professional up to 100 profiles, Business 300 or 500, Enterprise 1,000. The pricing page and the help centre show different prices for the same plans (Business: $99 and $49.50 on one, $119 and $59.50 on the other).</td><td>1, 2, 3, 4 by plan, with 100 to 400 cloud hours</td><td><span class="tag t-quote">Quote required</span></td></tr>
+<tr><td>Multilogin</td><td>Business from $26.67 a month billed yearly ($320), 100 to 10,000 profiles, unlimited team seats. Price above 100 profiles not shown.</td><td>Not published</td><td><span class="tag t-quote">Quote required</span></td></tr>
+<tr><td>AdsPower</td><td>Plans published, prices did not load for us.</td><td>Not published</td><td><span class="tag t-quote">Quote required</span></td></tr>
 </tbody>
 </table>
 </div></div>
-<div class="note">Job asks "VPNs or proxies?" not mandates them. Proxy is conditional. Per-profile bandwidth is unmeasured and needs pilot telemetry.</div>
+<div class="note">Sources: <a href="https://gologin.com/pricing/" target="_blank" rel="noopener">GoLogin pricing</a>, <a href="https://support.gologin.com/en/articles/14617029-pricing" target="_blank" rel="noopener">GoLogin help</a>, <a href="https://multilogin.com/pricing/" target="_blank" rel="noopener">Multilogin pricing</a>, <a href="https://www.adspower.com/pricing" target="_blank" rel="noopener">AdsPower pricing</a>. Checked 29 Oct 2026. Vendor marketing is not LinkedIn approval; tools are judged on isolation, licensing and operations only.</div>
+
+<h3>Network</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Option</th><th>Purpose</th><th>Cost</th><th>Use when</th></tr></thead>
+<tbody>
+<tr><td><strong>Secure baseline</strong></td><td>SSO, MFA, firewall, TLS, per workspace access, audit</td><td>Inside hosting</td><td>Always</td></tr>
+<tr><td><strong>Admin VPN (WireGuard)</strong></td><td>Private access to hosts for infrastructure staff</td><td>Open source, runs on existing host</td><td>Always for admin access</td></tr>
+<tr><td>Residential proxy (Decodo)</td><td>Network egress through a provider</td><td>Bundles: 3 GB $11.25, 10 GB $35, 25 GB $81.25, 50 GB $150, 100 GB $275, 250 GB $625, 1,000 GB $2,000, plus VAT. Other volumes by quote.</td><td>Only with a documented, approved reason</td></tr>
+<tr><td>ISP static proxy</td><td>One fixed address per workspace</td><td>Quote required</td><td>Only if a fixed address is truly required</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Source: <a href="https://decodo.com/proxies/residential-proxies/pricing" target="_blank" rel="noopener">Decodo residential pricing</a>, checked 29 Oct 2026. A metered bundle is shared bandwidth, not a dedicated address per profile.</div>
+
+<h3>Optional Tools (off by default)</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Tool</th><th>Where the app runs</th><th>Where its data lives</th><th>Licensing</th></tr></thead>
+<tbody>
+<tr><td>Linked Helper</td><td>Desktop app on your own computer or host, which must stay online</td><td>Local, or vendor cloud storage (USA) on cloud plans</td><td>Per licence. Term discounts 11%, 33%, 45% for 3, 6, 12 months; volume discounts from 10 licences. Discounts multiply.</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Not part of the infrastructure scope you asked for, and not assumed anywhere in the base cost. Shown only so its cost can be modelled if your team already plans to use it. <a href="https://www.linkedhelper.com/pricing/" target="_blank" rel="noopener">Linked Helper pricing</a>. Automation tools need their own review against platform terms.</div>
 </section>
 
 <!-- DASHBOARD -->
-<section class="panel" id="p-dashboard">
-<div class="section-accent"></div>
-<h2 class="panel-title">Dashboard Prototype</h2>
-<p class="panel-desc">Synthetic demonstration with 10 test workspaces. All data is fabricated. This dashboard shows host infrastructure health, not live LinkedIn account status.</p>
+<section class="panel" id="p-dashboard" role="tabpanel" aria-labelledby="t-dashboard" tabindex="0">
+<div class="kind-row"><span class="kind k-synth">Synthetic demo, simulated events</span></div>
+<h2 class="panel-title">Operations Dashboard Demo</h2>
+<p class="panel-desc">Ten made up workspaces to show how an operator would work the queue. Click a workspace, acknowledge or assign its incident, create an owner task, or inject a host fault. Everything happens inside this page: no alert, email or message is sent, and no real host is monitored. The pilot replaces this with real host agents and real alerts.</p>
 
-<div class="g5" style="margin-bottom:28px">
-<div class="stat"><div class="stat-n" style="color:var(--green)">6</div><div class="stat-l">Ready</div></div>
-<div class="stat"><div class="stat-n" style="color:var(--amber)">1</div><div class="stat-l">Owner Action</div></div>
-<div class="stat"><div class="stat-n" style="color:var(--red)">1</div><div class="stat-l">Degraded</div></div>
-<div class="stat"><div class="stat-n" style="color:var(--fg-muted)">1</div><div class="stat-l">Unverified</div></div>
-<div class="stat"><div class="stat-n" style="color:var(--amber)">1</div><div class="stat-l">Restricted</div></div>
+<noscript><div class="alert-card alert-amber"><div class="alert-title">JavaScript is off</div><div class="alert-body">The dashboard demo needs JavaScript to run.</div></div></noscript>
+<div class="g5" id="dash-stats" style="margin-bottom:22px" aria-live="polite"></div>
+
+<div class="toolbar">
+<div class="btn-row" role="group" aria-label="Filter workspaces" id="dash-filters">
+<button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+<button class="chip" type="button" data-f="infra" aria-pressed="false">Infrastructure issue</button>
+<button class="chip" type="button" data-f="owner" aria-pressed="false">Needs owner</button>
+<button class="chip" type="button" data-f="unk" aria-pressed="false">Session unknown</button>
+<button class="chip" type="button" data-f="ok" aria-pressed="false">Healthy</button>
+</div>
+<div class="btn-row">
+<button class="btn btn-primary" type="button" id="btn-inject">Inject host fault</button>
+<button class="btn" type="button" id="btn-reset">Reset demo</button>
+</div>
 </div>
 
-<h3>Workspace Grid</h3>
-<div class="g3">
-<div class="ws ws-ready"><div class="ws-id">WS-001</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: A. Rahman</div><div class="ws-prov">Source: automated host probe</div></div>
-<div class="ws ws-ready"><div class="ws-id">WS-002</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: M. Khan</div><div class="ws-prov">Source: automated host probe</div></div>
-<div class="ws ws-owner"><div class="ws-id">WS-003</div><div class="ws-badge b-amber">Owner Action Required</div><div class="ws-meta">Operator: S. Ahmed</div><div class="ws-prov">Session expired. Owner re-auth needed.</div></div>
-<div class="ws ws-ready"><div class="ws-id">WS-004</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: A. Rahman</div><div class="ws-prov">Source: automated host probe</div></div>
-<div class="ws ws-degraded"><div class="ws-id">WS-005</div><div class="ws-badge b-red">Infra Degraded</div><div class="ws-meta">Operator: T. Hussain</div><div class="ws-prov">CPU >90%, host load high.</div></div>
-<div class="ws ws-ready"><div class="ws-id">WS-006</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: M. Khan</div><div class="ws-prov">Source: automated host probe</div></div>
-<div class="ws ws-unverified"><div class="ws-id">WS-007</div><div class="ws-badge b-gray">Not Verified</div><div class="ws-meta">Operator: S. Ahmed</div><div class="ws-prov">No authorized status feed.</div></div>
-<div class="ws ws-ready"><div class="ws-id">WS-008</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: T. Hussain</div><div class="ws-prov">Source: automated host probe</div></div>
-<div class="ws ws-restricted"><div class="ws-id">WS-009</div><div class="ws-badge b-amber">Owner Reported Restricted</div><div class="ws-meta">Operator: A. Rahman</div><div class="ws-prov">Owner reported platform restriction.</div></div>
-<div class="ws ws-ready"><div class="ws-id">WS-010</div><div class="ws-badge b-green">Ready</div><div class="ws-meta">Operator: M. Khan</div><div class="ws-prov">Source: automated host probe</div></div>
+<div class="g3" id="ws-grid"></div>
+
+<div class="card detail" id="ws-detail" aria-live="polite">
+<p class="calc-sub" style="margin:0">Select a workspace to see its status fields, event history and actions.</p>
 </div>
 
-<h3>Attention Queue</h3>
+<h3>Incident Queue</h3>
+<div class="card" id="inc-list"></div>
+
+<h3>Audit Log <span class="sim">simulated</span></h3>
 <div class="card">
-<div class="attn"><div class="attn-dot" style="background:var(--amber);color:var(--amber)"></div><div><div class="attn-title">WS-003: Owner re-authentication needed</div><div class="attn-body">Session expired 2h ago. Notification sent to workspace owner. Waiting for owner action.</div></div></div>
-<div class="attn"><div class="attn-dot" style="background:var(--red);color:var(--red)"></div><div><div class="attn-title">WS-005: Infrastructure degraded</div><div class="attn-body">Host CPU sustained above 90% for 15 min. Infrastructure team action required.</div></div></div>
-<div class="attn"><div class="attn-dot" style="background:var(--fg-muted);color:var(--fg-muted)"></div><div><div class="attn-title">WS-007: Session status not verified</div><div class="attn-body">No authorized status feed. Cannot determine session state without owner report or approved integration.</div></div></div>
-<div class="attn"><div class="attn-dot" style="background:var(--amber);color:var(--amber)"></div><div><div class="attn-title">WS-009: Owner reported restriction</div><div class="attn-body">Owner reported restriction on their account. Appeal must be handled by profile owner personally.</div></div></div>
+<textarea class="log" id="audit-log" readonly aria-label="Simulated audit log"></textarea>
+<div class="btn-row" style="margin-top:10px"><button class="btn" type="button" id="btn-copy">Copy log</button><span class="calc-sub" id="copy-msg" style="margin:0"></span></div>
 </div>
 
-<h3>Operating Process</h3>
+<h3>Status Fields</h3>
 <div class="card"><div class="tbl-wrap">
 <table>
-<thead><tr><th>Time</th><th>Action</th><th>Who</th></tr></thead>
+<thead><tr><th>Field</th><th>Values</th><th>Source</th></tr></thead>
 <tbody>
-<tr><td>Morning</td><td>Dashboard check: workspace host health</td><td>Operator</td></tr>
-<tr><td>Morning</td><td>Red workspaces: fix host/network issues</td><td>Infra Team</td></tr>
-<tr><td>Morning</td><td>Owner action needed: notify account holders</td><td>Operator</td></tr>
-<tr><td>Daytime</td><td>Business operations on authorized workspaces</td><td>Operators</td></tr>
-<tr><td>Afternoon</td><td>Review operational stats through approved channels</td><td>Operator</td></tr>
-<tr><td>End of day</td><td>Review attention queue, owner-reported issues</td><td>Operator + Infra</td></tr>
-<tr><td>Weekly</td><td>Host health, backup verification, cost review</td><td>Infra Team</td></tr>
-<tr><td>Monthly</td><td>Full audit: capacity, cost, access review</td><td>Both Teams</td></tr>
+<tr><td>Host health</td><td>UP, DEGRADED, DOWN, UNKNOWN</td><td>Host agent</td></tr>
+<tr><td>Workspace runtime</td><td>RUNNING, STOPPED, ERROR, UNKNOWN</td><td>Host agent</td></tr>
+<tr><td>Member session</td><td>OWNER_CONFIRMED, OWNER_ACTION_REQUIRED, UNKNOWN</td><td>Profile owner, or an approved feed if one exists</td></tr>
+<tr><td>Owner report</td><td>NONE, REPORTED_RESTRICTED, REPORTED_CHALLENGE</td><td>Profile owner</td></tr>
+<tr><td>Incident</td><td>OPEN, ACKNOWLEDGED, ASSIGNED, RESOLVED</td><td>Operators and infrastructure team</td></tr>
 </tbody>
 </table>
 </div></div>
+<div class="note">Host UP never means the LinkedIn account is signed in or unrestricted. Without an owner confirmation or a permitted feed, member session stays UNKNOWN.</div>
 
-<div class="note">Dashboard shows host availability, not LinkedIn account status. "Ready" means host is reachable and runtime healthy. It does not mean the LinkedIn session is active or unrestricted.</div>
+<h3>Runbook</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Severity</th><th>Example</th><th>First response</th><th>Owner of the fix</th><th>Escalation</th></tr></thead>
+<tbody>
+<tr><td><span class="sev sev-1">SEV 1</span></td><td>Host down, several workspaces offline</td><td>Acknowledge, move workspaces to spare host</td><td>Infrastructure team</td><td>Ops lead informed at once</td></tr>
+<tr><td><span class="sev sev-2">SEV 2</span></td><td>Host degraded, backup failed, licence cap hit</td><td>Acknowledge, check runbook step</td><td>Infrastructure team</td><td>Ops lead if not fixed same day</td></tr>
+<tr><td><span class="sev sev-3">SEV 3</span></td><td>Owner re-authentication, owner reported issue</td><td>Create owner task</td><td>Profile owner</td><td>Ops lead if open past agreed time</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Response times are agreed with you at pilot kickoff. Daily routine: morning queue review by operators, infrastructure fixes first, owner tasks sent, end of day review. Weekly: backup check and cost review. Monthly: access review and capacity review.</div>
 </section>
 
-<!-- COST CALCULATOR -->
-<section class="panel" id="p-calculator">
-<div class="section-accent"></div>
-<h2 class="panel-title">Cost Calculator</h2>
-<p class="panel-desc">Illustrative estimates only, not verified TCO. Editable assumptions: concurrency %, per-workspace RAM, license count vs stored profiles, proxy yes/no. Missing from total: IPv4, backup storage, VAT/tax, Windows licensing, operator seats, support labor, identity/SSO, network egress overages.</p>
+<!-- COST MODEL -->
+<section class="panel" id="p-calculator" role="tabpanel" aria-labelledby="t-calculator" tabindex="0">
+<div class="kind-row"><span class="kind k-model">Illustrative model</span><span class="kind k-pilot">Sized with pilot measurements</span></div>
+<h2 class="panel-title">Cost Model</h2>
+<p class="panel-desc">Key assumptions are editable so you can see what moves the cost. Published prices are used where they exist; anything without a confirmed quote is marked and left out of the sum instead of guessed. The pilot replaces the assumptions with measured numbers.</p>
 
-<div class="g2">
-<div class="card">
-<div class="card-label">Configuration</div>
+<noscript><div class="alert-card alert-amber"><div class="alert-title">JavaScript is off</div><div class="alert-body">The cost model needs JavaScript to calculate. The rest of the page works without it.</div></div></noscript>
+
+<div class="calc-grid">
+<div class="card min0">
+<div class="card-label">Inputs</div>
 
 <div class="calc-row">
-<div class="calc-head"><span>Profile Count (N)</span><span class="calc-val" id="v-profiles">100</span></div>
+<div class="calc-head"><label for="r-profiles">Registered workspaces (N)</label><span class="calc-val" id="v-profiles">100</span></div>
 <input type="range" id="r-profiles" min="100" max="500" step="50" value="100">
 </div>
 
 <div class="calc-row">
-<div class="calc-head"><span>Peak Concurrency</span><span class="calc-val" id="v-conc">20%</span></div>
-<input type="range" id="r-conc" min="10" max="100" step="5" value="20">
-<div style="font-size:11px;color:var(--fg-muted);margin-top:5px">Must be measured in pilot</div>
+<div class="calc-head"><label for="r-conc">Peak active at once</label><span class="calc-val" id="v-conc">20%</span></div>
+<input type="range" id="r-conc" min="5" max="100" step="5" value="20">
+<div class="calc-sub" id="v-conc-n">C = 20 workspaces. Assumption until measured.</div>
 </div>
 
 <div class="calc-row">
-<div class="calc-head"><span>Per-Workspace RAM (GB)</span><span class="calc-val" id="v-ram">1.5</span></div>
+<div class="calc-head"><label for="r-ops">Named operators (U)</label><span class="calc-val" id="v-ops">5</span></div>
+<input type="range" id="r-ops" min="1" max="40" step="1" value="5">
+<div class="calc-sub">Affects seats, identity and Windows user licences.</div>
+</div>
+
+<div class="calc-row">
+<label class="calc-head" for="s-exec"><span>Where workspaces run</span></label>
+<select id="s-exec">
+<option value="self">Client hosted EU servers (local launches)</option>
+<option value="cloud">Vendor cloud launches</option>
+</select>
+</div>
+
+<div class="calc-row" id="row-sku">
+<label class="calc-head" for="s-sku"><span>Host size</span></label>
+<select id="s-sku">
+<option value="CCX23">CCX23: 8 vCPU, 32 GB, $101.49</option>
+<option value="CCX33">CCX33: 8 vCPU, 64 GB, $162.99</option>
+<option value="CCX43" selected>CCX43: 16 vCPU, 64 GB, $325.49</option>
+<option value="CCX53">CCX53: 32 vCPU, 128 GB, $629.49</option>
+</select>
+</div>
+
+<div class="calc-row" id="row-ram">
+<div class="calc-head"><label for="r-ram">RAM per active workspace (GB)</label><span class="calc-val" id="v-ram">1.5</span></div>
 <input type="range" id="r-ram" min="0.5" max="4" step="0.5" value="1.5">
-<div style="font-size:11px;color:var(--fg-muted);margin-top:5px">Unmeasured. Affects server count. Benchmark in pilot.</div>
+</div>
+
+<div class="calc-row" id="row-cpu">
+<div class="calc-head"><label for="r-cpu">vCPU per active workspace</label><span class="calc-val" id="v-cpu">0.5</span></div>
+<input type="range" id="r-cpu" min="0.25" max="2" step="0.25" value="0.5">
+<div class="calc-sub">Both are unmeasured. Pilot records p95 CPU, RAM, disk and bandwidth.</div>
+</div>
+
+<div class="calc-row" id="row-spare">
+<label class="check-row"><input type="checkbox" id="c-spare" checked> One spare host for failover</label>
 </div>
 
 <div class="calc-row">
-<div class="calc-head"><span>Browser Tool</span></div>
+<label class="calc-head" for="s-os"><span>Operating system</span></label>
+<select id="s-os">
+<option value="linux">Linux desktop</option>
+<option value="windows">Windows Server remote desktop</option>
+</select>
+</div>
+
+<div class="calc-row">
+<label class="calc-head" for="s-browser"><span>Browser workspace software</span></label>
 <select id="s-browser">
-<option value="gologin">GoLogin Pro (~$19.50/mo per 100, quote required)</option>
-<option value="multilogin">Multilogin Business (from $26.67/mo, scaling unconfirmed)</option>
-<option value="adspower">AdsPower Pro ($28.80/mo annual per 100, scaling unconfirmed)</option>
+<option value="gologin">GoLogin</option>
+<option value="multilogin">Multilogin</option>
+<option value="adspower">AdsPower</option>
+<option value="none">None (standard browser profiles)</option>
 </select>
 </div>
 
 <div class="calc-row">
-<div class="calc-head"><span>LinkedHelper Licensing</span></div>
-<select id="s-lh">
-<option value="concurrent">Concurrent licenses only (peak active)</option>
-<option value="all">All profiles licensed (maximum cost)</option>
+<label class="calc-head" for="s-net"><span>Proxy</span></label>
+<select id="s-net">
+<option value="none">None, secure baseline only</option>
+<option value="3">Decodo 3 GB, $11.25</option>
+<option value="10">Decodo 10 GB, $35</option>
+<option value="25">Decodo 25 GB, $81.25</option>
+<option value="50">Decodo 50 GB, $150</option>
+<option value="100">Decodo 100 GB, $275</option>
+<option value="250">Decodo 250 GB, $625</option>
+<option value="1000">Decodo 1,000 GB, $2,000</option>
+<option value="custom">Other volume or static IPs (quote)</option>
 </select>
 </div>
 
 <div class="calc-row">
-<div class="toggle-row" onclick="toggleProxy()">
-<div class="sw" id="proxy-sw"></div>
-<span>Residential Proxy (conditional)</span>
+<div class="calc-head"><label for="r-sup">Support hours per month</label><span class="calc-val" id="v-sup">10</span></div>
+<input type="range" id="r-sup" min="0" max="60" step="2" value="10">
+<div class="calc-sub">Ongoing maintenance at $20 an hour, optional after handover.</div>
+</div>
+
+<div class="opt-box">
+<label class="check-row"><input type="checkbox" id="c-lh"> Model optional Linked Helper licences</label>
+<div id="lh-opts" hidden>
+<div class="calc-row" style="margin-top:12px">
+<label class="calc-head" for="s-lhplan"><span>Plan (local workspace)</span></label>
+<select id="s-lhplan"><option value="15">Standard, $15 per licence</option><option value="45" selected>Pro, $45 per licence</option></select>
+</div>
+<div class="calc-row">
+<label class="calc-head" for="s-lhterm"><span>Billing term</span></label>
+<select id="s-lhterm"><option value="1">Monthly</option><option value="3">3 months prepaid (11% off)</option><option value="6">6 months prepaid (33% off)</option><option value="12" selected>12 months prepaid (45% off)</option></select>
+</div>
+<div class="calc-row" style="margin-bottom:0">
+<label class="calc-head" for="s-lhcount"><span>Licence count</span></label>
+<select id="s-lhcount"><option value="C">Peak active (C)</option><option value="N">Every workspace (N)</option></select>
+<div class="calc-sub">Moving one licence between accounts is a manual step and cannot cover two accounts at the same time.</div>
+</div>
+</div>
 </div>
 </div>
 
-<div class="calc-row" id="proxy-gb-row" style="display:none">
-<div class="calc-head"><span>Proxy GB/mo</span><span class="calc-val" id="v-gb">100</span></div>
-<input type="range" id="r-gb" min="25" max="500" step="25" value="100">
-<div style="font-size:11px;color:var(--fg-muted);margin-top:5px">Per-profile bandwidth unmeasured</div>
-</div>
+<div class="min0">
+<div class="card">
+<div class="card-label">Monthly recurring, at N = <span id="o-n">100</span></div>
+<div id="cost-lines"></div>
+<div class="sub-total"><span>Sum of priced items</span><span id="o-sum">$0.00</span></div>
+<div class="calc-sub" id="o-open"></div>
+<div id="o-warn"></div>
 </div>
 
 <div class="card">
-<div class="card-label">Monthly Breakdown</div>
-
-<div class="cost-line"><span class="cl-name">Hosting (Hetzner EU)</span><span class="cl-price" id="c-host">$326</span></div>
-<div class="cost-line"><span class="cl-name">Browser Tool</span><span class="cl-price" id="c-brow">$20</span></div>
-<div class="cost-line"><span class="cl-name">LinkedHelper Pro (stacked)</span><span class="cl-price" id="c-lh">$297</span></div>
-<div class="cost-line"><span class="cl-name">Proxy (if enabled)</span><span class="cl-price" id="c-prx">$0</span></div>
-<div class="cost-line"><span class="cl-name">Dashboard / Monitoring</span><span class="cl-price" id="c-mon">$50</span></div>
-<div style="font-size:11px;color:var(--fg-muted);padding:8px 0">Not included: IPv4, backup storage, VAT/tax, Windows licensing, operator seats, support labor, identity/SSO, network egress overages</div>
-
-<div class="cost-total-box">
-<div class="ct-label">Estimated Monthly (illustrative)</div>
-<div class="ct-amount" id="c-total">$693</div>
-<div class="ct-label">Not verified TCO</div>
+<div class="card-label">One time services</div>
+<div class="cl"><span class="cl-n">Pilot, fixed fee</span><span class="cl-p">$800.00</span></div>
+<div class="cl"><span class="cl-n">After pilot, at $20 an hour, up to</span><span class="cl-p">$2,200.00</span><span class="cl-note">110 hours maximum, scoped in writing per milestone</span></div>
+<div class="sub-total"><span>Services cap, pilot included</span><span>$3,000.00</span></div>
+<div class="calc-sub">Cloud, software licences and VAT are billed at cost after your approval and are not part of the cap.</div>
 </div>
 
-<h3>Scale Reference (from research)</h3>
-<div class="tbl-wrap" style="margin-top:10px">
+<div class="card">
+<div class="card-label">Same inputs at 100, 250 and 500</div>
+<div class="tbl-wrap">
 <table>
-<thead><tr><th>Scale</th><th>Range</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td>100 Profiles</td><td>$692 to $2,380/mo</td><td>Depends on licensing, proxy, concurrency</td></tr>
-<tr><td>250 Profiles</td><td>$1,517 to $5,487/mo</td><td>Illustrative estimate</td></tr>
-<tr><td>500 Profiles</td><td>$2,975 to $10,915/mo</td><td>Illustrative estimate</td></tr>
-</tbody>
+<thead><tr><th>Item</th><th class="num">100</th><th class="num">250</th><th class="num">500</th></tr></thead>
+<tbody id="scen-body"></tbody>
 </table>
 </div>
+<div class="calc-sub" style="margin-top:8px">Recalculated from every input above. Proxy bundle and support hours are held the same across columns. Priced items only; open quotes are listed, not guessed.</div>
+</div>
 </div>
 </div>
 
-<div class="note">Server capacity has no benchmark. VM packing must be measured in pilot. Server count derived from: concurrent workspaces x per-workspace RAM / 60 GB usable per CCX43 (64 GB total, ~4 GB OS overhead). All assumptions editable above and subject to pilot measurement.</div>
+<div class="note">Host count = the larger of RAM need and CPU need for C active workspaces, after reserving 4 GB and 1 vCPU per host for the OS, plus the spare host if selected. This is a floor based on assumptions, not tested capacity. Hetzner prices exclude IPv4, VAT and backups.</div>
 </section>
 
-<!-- PILOT PLAN -->
-<section class="panel" id="p-pilot">
-<div class="section-accent"></div>
-<h2 class="panel-title">Pilot Plan</h2>
-<p class="panel-desc">$800 fixed price. 5 to 10 workspace shells on controlled EU test infrastructure with synthetic test identities and 2 to 3 assigned test operators.</p>
+<!-- PILOT AND ROLLOUT -->
+<section class="panel" id="p-pilot" role="tabpanel" aria-labelledby="t-pilot" tabindex="0">
+<div class="kind-row"><span class="kind k-pilot">Proposed offer</span></div>
+<h2 class="panel-title">Pilot and Rollout</h2>
+<p class="panel-desc">A small paid pilot on real test infrastructure, so you see measured results before committing to 100 workspaces. Synthetic test identities only; real profiles join only after the Day 1 gate and with each owner's agreement.</p>
 
-<div class="alert-card" style="background:linear-gradient(135deg,rgba(239,68,68,0.1),rgba(239,68,68,0.03));border-color:rgba(239,68,68,0.25);color:var(--red-fg)">
-<div class="alert-title">Pilot Excludes</div>
-<div class="alert-body">Third-party SaaS costs, cloud compute costs, premium proxy, VAT, legal counsel, account sourcing, content/sending operations, restriction management, live automation, profile impersonation, cookie transfers, LinkedIn security avoidance, scraping account status, "no restrictions" guarantee, 100 active production profiles.</div>
+<div class="price-hero">
+<div class="ph"><div class="ph-v">$800</div><div class="ph-l">Pilot, fixed fee for our work. 7 working days from kickoff access.</div></div>
+<div class="ph"><div class="ph-v">$20/hr</div><div class="ph-l">After the pilot, each milestone scoped in writing before work starts.</div></div>
+<div class="ph"><div class="ph-v">$3,000</div><div class="ph-l">Total services cap, pilot included. No work past the cap without your written approval.</div></div>
+</div>
+<div class="note" style="margin-top:0;margin-bottom:8px">Cloud hosting, software licences and VAT are not in these fees. They are bought in your name or billed at cost, after your approval.</div>
+
+<h3>What the Pilot Builds</h3>
+<div class="g2">
+<div class="card"><div class="card-label">Included</div>
+<ul class="clean">
+<li>5 to 10 isolated workspaces on EU test hosts</li>
+<li>SSO with MFA and 2 to 3 test operator roles</li>
+<li>Host agent, alert rules and a working operator view</li>
+<li>Owner task routing for re-authentication</li>
+<li>Encrypted backup and a timed restore</li>
+<li>Measured CPU, RAM, disk and bandwidth per workspace</li>
+<li>Runbook, topology, role map and a GO or NO GO report</li>
+</ul></div>
+<div class="card"><div class="card-label" style="color:var(--red)">Not included</div>
+<ul class="clean">
+<li>Account sourcing, creation or recovery</li>
+<li>Messaging, content or sending work</li>
+<li>Copying cookies or sessions between people</li>
+<li>Getting around LinkedIn security or limits</li>
+<li>Any promise that accounts will not be restricted</li>
+<li>100 live production workspaces</li>
+<li>Third party costs and legal advice</li>
+</ul></div>
 </div>
 
-<h3>Timeline</h3>
+<h3>Timeline, Working Days</h3>
 <div class="tl">
-<div class="tl-item"><div class="tl-day">Day 1</div><div class="tl-text">Discovery, permissions, architecture confirm</div></div>
-<div class="tl-item"><div class="tl-day">Days 2-3</div><div class="tl-text">Infra setup, SSO/RBAC, workspace isolation</div></div>
-<div class="tl-item"><div class="tl-day">Days 4-5</div><div class="tl-text">Dashboard, synthetic states, audit trail</div></div>
-<div class="tl-item"><div class="tl-day">Days 6-7</div><div class="tl-text">Cost baseline, backup test, SOP, walkthrough</div></div>
-<div class="tl-item"><div class="tl-day">Optional</div><div class="tl-text">5 days actual telemetry observation</div></div>
+<div class="tl-item"><div class="tl-day">Day 1</div><div class="tl-text">Inventory, owner and operator gate, OS and tool choice, risk list. Signed off before build.</div></div>
+<div class="tl-item"><div class="tl-day">Days 2 to 3</div><div class="tl-text">Test hosts, workspaces, SSO, roles</div></div>
+<div class="tl-item"><div class="tl-day">Days 4 to 5</div><div class="tl-text">Host agent, alerts, operator view, owner tasks</div></div>
+<div class="tl-item"><div class="tl-day">Days 6 to 7</div><div class="tl-text">Backup restore, measurements, runbook, GO or NO GO</div></div>
+<div class="tl-item"><div class="tl-day">Optional</div><div class="tl-text">5 more working days of real telemetry, quoted separately</div></div>
 </div>
+<div class="note">Days count from the day we receive cloud access and the Day 1 decisions. Vendor or owner delays move the dates, not the price.</div>
 
-<h3>Acceptance Scorecard</h3>
+<h3>Acceptance Tests</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>#</th><th>Test</th><th>Pass when</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Isolation</td><td>Each workspace has its own storage; files from one cannot be read from another</td><td>Inventory with owner mapping, isolation check output</td></tr>
+<tr><td>2</td><td>Access grant and deny</td><td>Assigned operator opens their workspace; an unassigned operator is refused for the same one</td><td>Recording of both, audit log entries</td></tr>
+<tr><td>3</td><td>Host fault alert</td><td>Injected host failure shows on the dashboard and alert channel within the agreed time (we propose 2 minutes)</td><td>Event ID, timestamps, alert copy</td></tr>
+<tr><td>4</td><td>Backup restore</td><td>Restored workspace matches the backup checksum; restore time recorded</td><td>Checksums before and after, timing</td></tr>
+<tr><td>5</td><td>Owner re-authentication</td><td>Task reaches the right owner; no password or OTP is seen by admin or operator</td><td>Task log, admin view showing no secret</td></tr>
+<tr><td>6</td><td>Measurement</td><td>p50 and p95 CPU and RAM per active workspace recorded under a stated workload</td><td>Metrics export with test conditions</td></tr>
+<tr><td>7</td><td>Handover rehearsal</td><td>Your admin rebuilds one workspace and restores one backup using only the runbook</td><td>Session recording, signed checklist</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Thresholds are agreed at kickoff and each test is signed off by a person you name. "Accounts stay unrestricted" is not a test, because that is outside infrastructure control.</div>
+
+<h3>Rollout After the Pilot</h3>
 <div class="card">
-<div class="check"><div class="check-n">1</div><div><div class="check-title">Workspace Isolation</div><div class="check-desc">5 to 10 isolated workspaces, named owners assigned with audit trace</div><div class="check-ev">Evidence: workspace inventory with owner mapping, audit log</div></div></div>
-<div class="check"><div class="check-n">2</div><div><div class="check-title">Role Access Control</div><div class="check-desc">2 to 3 user roles: authorized access AND unauthorized access denied test</div><div class="check-ev">Evidence: access grant + denial screenshot for same resource</div></div></div>
-<div class="check"><div class="check-n">3</div><div><div class="check-title">Alert System</div><div class="check-desc">Synthetic host disconnect and storage fault raise distinct alerts with provenance and timestamp</div><div class="check-ev">Evidence: alert log with injected fault and provenance tag</div></div></div>
-<div class="check"><div class="check-n">4</div><div><div class="check-title">Backup Restore</div><div class="check-desc">One encrypted workspace backup restored, restore time recorded</div><div class="check-ev">Evidence: backup hash before/after, restore timestamp</div></div></div>
-<div class="check"><div class="check-n">5</div><div><div class="check-title">Owner Escalation</div><div class="check-desc">Owner-triggered reauth ticket escalates correctly; admin gets no OTP secrets</div><div class="check-ev">Evidence: ticket routing log + admin denial proof</div></div></div>
-<div class="check"><div class="check-n">6</div><div><div class="check-title">Metrics and Cost</div><div class="check-desc">CPU, RAM, disk, observed concurrency and cost extrapolation with editable assumptions</div><div class="check-ev">Evidence: metrics dashboard with labeled data sources</div></div></div>
-<div class="check"><div class="check-n">7</div><div><div class="check-title">Handover Package</div><div class="check-desc">Infra spec, role matrix, runbook, topology, encrypted backup policy, admin transfer</div><div class="check-ev">Evidence: document package + walkthrough recording</div></div></div>
+<div class="phase"><div class="phase-n">1</div><div class="min0"><div class="phase-t">Pilot, 5 to 10 workspaces</div><div class="phase-d">Proves isolation, access control, alerts, restore, and gives real sizing data.</div><div class="phase-g">Gate: acceptance tests passed, GO decision</div></div></div>
+<div class="phase"><div class="phase-n">2</div><div class="min0"><div class="phase-t">Validation at 25</div><div class="phase-d">Host packing and alert noise checked at a larger scale with your operators.</div><div class="phase-g">Gate: measured load within planned headroom</div></div></div>
+<div class="phase"><div class="phase-n">3</div><div class="min0"><div class="phase-t">Go live at 100</div><div class="phase-d">Hosts added from measured sizing, runbooks in daily use, handover to your admin.</div><div class="phase-g">Gate: handover checklist signed</div></div></div>
+<div class="phase"><div class="phase-n">4</div><div class="min0"><div class="phase-t">Expand to 250, then 500</div><div class="phase-d">More hosts, possibly a second location for resilience. Estimated separately from real 100 workspace data.</div><div class="phase-g">Gate: cost and capacity review</div></div></div>
 </div>
 
-<div class="note">Acceptance is infrastructure-focused. "All profiles active with no restrictions" is not a criterion because restriction outcomes are outside infrastructure control.</div>
+<h3>Milestones Inside the $3,000 Cap</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Milestone</th><th>Covers</th><th class="num">Hours</th><th class="num">Fee</th></tr></thead>
+<tbody>
+<tr><td>Pilot</td><td>Everything listed above</td><td class="num">fixed</td><td class="num">$800</td></tr>
+<tr><td>Architecture document</td><td>Final hosting, OS, network, security and 100, 250, 500 cost scenarios from pilot data</td><td class="num">30 to 40</td><td class="num">$600 to $800</td></tr>
+<tr><td>Operator dashboard and process</td><td>Production version of the operator view, alert routing, daily process</td><td class="num">30 to 40</td><td class="num">$600 to $800</td></tr>
+<tr><td>Rollout to 100 and handover</td><td>Phases 2 and 3 above, admin training</td><td class="num">20 to 30</td><td class="num">$400 to $600</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Expansion to 250 and 500 and ongoing support are estimated separately once the 100 workspace setup is measured.</div>
+
+<h3>Handover Package</h3>
+<div class="card">
+<ul class="clean">
+<li>Cloud account, hosts and DNS registered to Aviovis, with admin access transferred</li>
+<li>Configuration repository so hosts can be rebuilt the same way</li>
+<li>Host, workspace and access inventory, plus the role map</li>
+<li>Backup policy with encryption keys held by Aviovis</li>
+<li>Runbooks for each incident type and a recovery drill your admin has run</li>
+<li>Cost monitoring and a list of every active vendor account</li>
+<li>Optional support plan, only if you want one</li>
+</ul>
+</div>
 </section>
 
-<!-- ROLE MATRIX -->
-<section class="panel" id="p-roles">
-<div class="section-accent"></div>
-<h2 class="panel-title">Role-Based Access Control</h2>
-<p class="panel-desc">5 roles with clear separation between infrastructure management and LinkedIn account actions. Infrastructure team manages hosts, not personal LinkedIn credentials.</p>
+<!-- ROLES AND SECURITY -->
+<section class="panel" id="p-roles" role="tabpanel" aria-labelledby="t-roles" tabindex="0">
+<div class="kind-row"><span class="kind k-prop">Proposed boundaries</span><span class="kind k-pilot">Enforcement tested in pilot</span></div>
+<h2 class="panel-title">Roles and Security</h2>
+<p class="panel-desc">Proposed permission boundaries for five roles. This page only describes them; in the pilot they are enforced through SSO groups and tested with real grant and deny checks.</p>
 
 <div class="role">
 <div class="role-name">Infrastructure Admin</div>
 <div class="role-cols">
-<div><div class="role-col-title yes">Can Do</div>
-<div class="perm py">Host/OS patching and updates</div>
-<div class="perm py">Health metrics monitoring</div>
-<div class="perm py">Workspace provisioning</div>
-<div class="perm py">Platform service recovery</div>
-<div class="perm py">Network/proxy configuration</div>
-<div class="perm py">Backup management and restore</div>
+<div><div class="role-col-title yes">Can do</div>
+<div class="perm py">Patch and update hosts</div>
+<div class="perm py">Watch host health and alerts</div>
+<div class="perm py">Create and remove workspaces</div>
+<div class="perm py">Restore from backup under the break glass rule</div>
+<div class="perm py">Manage network and VPN</div>
 </div>
-<div><div class="role-col-title no">Cannot Do By Default</div>
-<div class="perm pn">Sign in as LinkedIn member</div>
-<div class="perm pn">Extract cookies or 2FA seeds</div>
-<div class="perm pn">View LinkedIn message content</div>
-<div class="perm pn">Appeal account restrictions</div>
+<div><div class="role-col-title no">Cannot do by default</div>
+<div class="perm pn">Sign in as a LinkedIn member</div>
+<div class="perm pn">Read cookies, passwords or 2FA codes</div>
+<div class="perm pn">Read LinkedIn messages</div>
+<div class="perm pn">Act on account restrictions</div>
 </div>
 </div>
 </div>
@@ -896,50 +1218,49 @@ h3 {
 <div class="role">
 <div class="role-name">Operations Lead</div>
 <div class="role-cols">
-<div><div class="role-col-title yes">Can Do</div>
+<div><div class="role-col-title yes">Can do</div>
 <div class="perm py">Assign workspaces to operators</div>
-<div class="perm py">View full attention queue</div>
+<div class="perm py">See the full incident queue</div>
 <div class="perm py">Approve operational changes</div>
-<div class="perm py">Generate reports and exports</div>
+<div class="perm py">Export reports</div>
 </div>
-<div><div class="role-col-title no">Cannot Do By Default</div>
-<div class="perm pn">Override owner access decisions</div>
-<div class="perm pn">View unrelated workspace data</div>
-<div class="perm pn">Modify infrastructure settings</div>
-</div>
-</div>
-</div>
-
-<div class="role">
-<div class="role-name">Profile Operator</div>
-<div class="role-cols">
-<div><div class="role-col-title yes">Can Do</div>
-<div class="perm py">Use assigned workspace</div>
-<div class="perm py">Use approved tools within workspace</div>
-<div class="perm py">Report issues through queue</div>
-</div>
-<div><div class="role-col-title no">Cannot Do By Default</div>
-<div class="perm pn">Access other operators' workspaces</div>
-<div class="perm pn">Export credentials</div>
-<div class="perm pn">System administration</div>
+<div><div class="role-col-title no">Cannot do by default</div>
+<div class="perm pn">Override an owner's decision on their account</div>
+<div class="perm pn">Open unassigned workspaces</div>
+<div class="perm pn">Change infrastructure settings</div>
 </div>
 </div>
 </div>
 
 <div class="role">
-<div class="role-name">Account Holder / Owner</div>
+<div class="role-name">Operator</div>
 <div class="role-cols">
-<div><div class="role-col-title yes">Can Do</div>
-<div class="perm py">Sign in and re-auth own account</div>
-<div class="perm py">Handle own 2FA verification</div>
-<div class="perm py">Complete own CAPTCHA/challenges</div>
-<div class="perm py">Appeal own restrictions</div>
-<div class="perm py">Report own account status</div>
+<div><div class="role-col-title yes">Can do</div>
+<div class="perm py">Open assigned workspaces only</div>
+<div class="perm py">Use approved tools inside them</div>
+<div class="perm py">Raise issues to the queue</div>
 </div>
-<div><div class="role-col-title no">Cannot Do By Default</div>
-<div class="perm pn">Impersonate other profiles</div>
-<div class="perm pn">Access other owners' workspaces</div>
-<div class="perm pn">Modify infrastructure settings</div>
+<div><div class="role-col-title no">Cannot do by default</div>
+<div class="perm pn">Open other operators' workspaces</div>
+<div class="perm pn">Export any credentials</div>
+<div class="perm pn">Administer hosts</div>
+</div>
+</div>
+</div>
+
+<div class="role">
+<div class="role-name">Profile Owner</div>
+<div class="role-cols">
+<div><div class="role-col-title yes">Can do</div>
+<div class="perm py">Sign in and re-authenticate their own account</div>
+<div class="perm py">Handle their own 2FA and challenges</div>
+<div class="perm py">Appeal their own restrictions</div>
+<div class="perm py">Report their account status</div>
+</div>
+<div><div class="role-col-title no">Cannot do by default</div>
+<div class="perm pn">Use anyone else's profile</div>
+<div class="perm pn">Open other owners' workspaces</div>
+<div class="perm pn">Change infrastructure settings</div>
 </div>
 </div>
 </div>
@@ -947,112 +1268,368 @@ h3 {
 <div class="role">
 <div class="role-name">Auditor</div>
 <div class="role-cols">
-<div><div class="role-col-title yes">Can Do</div>
-<div class="perm py">Read-only configuration access</div>
+<div><div class="role-col-title yes">Can do</div>
+<div class="perm py">Read configuration</div>
 <div class="perm py">Review audit logs</div>
-<div class="perm py">Generate compliance reports</div>
+<div class="perm py">Produce access reports</div>
 </div>
-<div><div class="role-col-title no">Cannot Do By Default</div>
-<div class="perm pn">Modify secrets</div>
-<div class="perm pn">Message prospects</div>
+<div><div class="role-col-title no">Cannot do by default</div>
+<div class="perm pn">Change secrets</div>
+<div class="perm pn">Use workspaces</div>
 <div class="perm pn">Delete audit records</div>
 </div>
 </div>
 </div>
 
-<div class="note">"Separate infrastructure support from actions by profile owners" is a design requirement from the job posting. Owner-led model ensures LinkedIn compliance.</div>
+<h3>Security Controls</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Area</th><th>Proposed control</th></tr></thead>
+<tbody>
+<tr><td>Sign in</td><td>Company SSO with MFA for every human user. Accounts are personal, never shared.</td></tr>
+<tr><td>Secrets</td><td>Infrastructure keys in a vault with rotation. Personal LinkedIn passwords and 2FA seeds are never stored by us.</td></tr>
+<tr><td>Workspace data</td><td>Encrypted per workspace. Admin restore access only through a logged break glass step approved by the ops lead.</td></tr>
+<tr><td>Logs</td><td>Tokens and personal data redacted. Audit log exported to storage admins cannot edit.</td></tr>
+<tr><td>Joiners and leavers</td><td>Access granted through SSO groups, removed the same day someone leaves, reviewed monthly.</td></tr>
+<tr><td>Data protection</td><td>Aviovis as controller, us as processor under a data processing agreement. EU hosting; any non EU tool storage flagged before use.</td></tr>
+<tr><td>Incidents</td><td>Written response steps for lost devices, leaked keys and suspicious access, with contacts and timings.</td></tr>
+</tbody>
+</table>
+</div></div>
+
+<h3>Recovery</h3>
+<div class="card"><div class="tbl-wrap">
+<table>
+<thead><tr><th>Item</th><th>Proposal</th></tr></thead>
+<tbody>
+<tr><td>Backups</td><td>Daily encrypted workspace backups, kept 14 days, schedule confirmed with you</td></tr>
+<tr><td>Recovery targets</td><td>RPO and RTO agreed at kickoff, then proven with a timed restore</td></tr>
+<tr><td>Host failure</td><td>Workspaces moved to the spare host; how many workspaces one host carries is known from sizing</td></tr>
+<tr><td>Provider outage</td><td>Rebuild in a second Hetzner location from the configuration repository and backups</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="note">Your brief asks to separate infrastructure support from actions by profile owners. These boundaries do that on paper; the pilot proves it in practice. Any tool or operating model is checked against platform terms before production.</div>
 </section>
 
-</div>
+</main>
 
 <footer class="site-footer wrap">
-<p>Prepared by CrewNexa | crewnexa.com | Synthetic prototype for Aviovis Group</p>
-<p style="margin-top:5px">All vendor prices sourced October 2026. GoLogin prices require quote confirmation. Server capacity unbenchmarked.</p>
+<p>Prepared by CrewNexa | crewnexa.com | Independent concept for Aviovis Group</p>
+<p style="margin-top:5px">Vendor prices checked on official vendor pages, 29 October 2026. Server capacity not yet benchmarked. Live walkthrough available on request.</p>
 </footer>
 
 <script>
-document.querySelectorAll('.nav-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.nav-btn').forEach(b => b.setAttribute('aria-selected','false'));
-    document.querySelectorAll('.panel').forEach(p => delete p.dataset.active);
-    btn.setAttribute('aria-selected','true');
-    document.getElementById('p-' + btn.dataset.tab).dataset.active = '';
+(function () {
+  'use strict';
+
+  /* ---------- Tabs (keyboard accessible) ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+    try { tab.scrollIntoView({ block: 'nearest', inline: 'nearest' }); } catch (e) {}
+  }
+  selectTab(tabs[0], false);
+  window.scrollTo(0, 0);
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') n = tabs[0];
+      else if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
   });
-});
 
-let proxyOn = false;
-function toggleProxy() {
-  proxyOn = !proxyOn;
-  document.getElementById('proxy-sw').classList.toggle('on', proxyOn);
-  document.getElementById('proxy-gb-row').style.display = proxyOn ? 'block' : 'none';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  /* ---------- Dashboard simulation ---------- */
+  var SEED_WS = [
+    { id: 'WS-001', op: 'Operator A', host: 'UP', run: 'RUNNING', sess: 'OWNER_CONFIRMED', own: 'NONE' },
+    { id: 'WS-002', op: 'Operator B', host: 'UP', run: 'RUNNING', sess: 'OWNER_CONFIRMED', own: 'NONE' },
+    { id: 'WS-003', op: 'Operator C', host: 'UP', run: 'RUNNING', sess: 'OWNER_ACTION_REQUIRED', own: 'NONE' },
+    { id: 'WS-004', op: 'Operator A', host: 'UP', run: 'RUNNING', sess: 'UNKNOWN', own: 'NONE' },
+    { id: 'WS-005', op: 'Operator D', host: 'DEGRADED', run: 'RUNNING', sess: 'UNKNOWN', own: 'NONE' },
+    { id: 'WS-006', op: 'Operator B', host: 'UP', run: 'RUNNING', sess: 'OWNER_CONFIRMED', own: 'NONE' },
+    { id: 'WS-007', op: 'Operator C', host: 'UP', run: 'STOPPED', sess: 'UNKNOWN', own: 'NONE' },
+    { id: 'WS-008', op: 'Operator D', host: 'UP', run: 'RUNNING', sess: 'OWNER_CONFIRMED', own: 'NONE' },
+    { id: 'WS-009', op: 'Operator A', host: 'UP', run: 'RUNNING', sess: 'UNKNOWN', own: 'REPORTED_RESTRICTED' },
+    { id: 'WS-010', op: 'Operator B', host: 'DOWN', run: 'UNKNOWN', sess: 'UNKNOWN', own: 'NONE' }
+  ];
+  var SEED_INC = [
+    { ws: 'WS-010', sev: 1, title: 'Host not responding', kind: 'infra', src: 'Host agent' },
+    { ws: 'WS-005', sev: 2, title: 'Host CPU above threshold', kind: 'infra', src: 'Host agent' },
+    { ws: 'WS-007', sev: 2, title: 'Workspace runtime stopped', kind: 'infra', src: 'Host agent' },
+    { ws: 'WS-003', sev: 3, title: 'Owner re-authentication needed', kind: 'owner', src: 'Owner report' },
+    { ws: 'WS-009', sev: 3, title: 'Owner reported a restriction', kind: 'owner', src: 'Owner report' }
+  ];
+  var ws, inc, log, clock, incSeq, selected, filter;
+
+  function tick() { clock += 1 + Math.floor(Math.random() * 3); var h = 9 + Math.floor(clock / 60), m = clock % 60; return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m; }
+  function addLog(actor, action, wsId) { log.push(tick() + '  ' + actor + '  ' + action + (wsId ? '  ' + wsId : '') + '  [SIMULATION]'); }
+  function getWs(id) { for (var i = 0; i < ws.length; i++) if (ws[i].id === id) return ws[i]; return null; }
+  function openIncFor(id) { return inc.filter(function (x) { return x.ws === id && x.state !== 'RESOLVED'; }); }
+  function category(w) {
+    if (w.host !== 'UP' || w.run === 'STOPPED' || w.run === 'ERROR' || w.run === 'UNKNOWN') return 'infra';
+    if (w.sess === 'OWNER_ACTION_REQUIRED' || w.own !== 'NONE') return 'owner';
+    if (w.sess === 'UNKNOWN') return 'unk';
+    return 'ok';
+  }
+  function cls(v) {
+    if (v === 'UP' || v === 'RUNNING' || v === 'OWNER_CONFIRMED' || v === 'NONE') return 'd-up';
+    if (v === 'DOWN' || v === 'ERROR') return 'd-bad';
+    if (v === 'UNKNOWN') return '';
+    return 'd-warn';
+  }
+
+  function resetDemo() {
+    ws = SEED_WS.map(function (w) { return Object.assign({}, w); });
+    clock = 0; incSeq = 100; log = []; selected = null; filter = 'all';
+    inc = SEED_INC.map(function (s) {
+      incSeq++;
+      var t = tick();
+      log.push(t + '  ' + s.src + '  INC-' + incSeq + ' opened: ' + s.title + '  ' + s.ws + '  [SIMULATION]');
+      return { id: 'INC-' + incSeq, ws: s.ws, sev: s.sev, title: s.title, kind: s.kind, src: s.src, state: 'OPEN', who: null, opened: t };
+    });
+    document.querySelectorAll('#dash-filters .chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.f === 'all' ? 'true' : 'false'); });
+    renderDash();
+  }
+
+  function renderStats() {
+    var c = { ok: 0, infra: 0, owner: 0, unk: 0 };
+    ws.forEach(function (w) { c[category(w)]++; });
+    var open = inc.filter(function (x) { return x.state !== 'RESOLVED'; }).length;
+    var tiles = [['Healthy', c.ok, 'var(--green)'], ['Infra issue', c.infra, 'var(--red)'], ['Needs owner', c.owner, 'var(--amber)'], ['Session unknown', c.unk, 'var(--fg-muted)'], ['Open incidents', open, 'var(--accent)']];
+    document.getElementById('dash-stats').innerHTML = tiles.map(function (t) {
+      return '<div class="stat"><div class="stat-n" style="color:' + t[2] + '">' + t[1] + '</div><div class="stat-l">' + t[0] + '</div></div>';
+    }).join('');
+  }
+
+  function renderGrid() {
+    var html = ws.filter(function (w) { return filter === 'all' || category(w) === filter; }).map(function (w) {
+      var cat = category(w);
+      var badge = { ok: ['b-green', 'Healthy'], infra: ['b-red', 'Infrastructure issue'], owner: ['b-amber', 'Needs owner'], unk: ['b-gray', 'Session unknown'] }[cat];
+      return '<button type="button" class="ws ws-' + { ok: 'ok', infra: 'infra', owner: 'own', unk: 'unk' }[cat] + '" data-ws="' + w.id + '" aria-pressed="' + (selected === w.id) + '">' +
+        '<div class="ws-id">' + w.id + '</div><span class="ws-badge ' + badge[0] + '">' + badge[1] + '</span>' +
+        '<dl class="dims"><dt>Host</dt><dd class="' + cls(w.host) + '">' + w.host + '</dd><dt>Runtime</dt><dd class="' + cls(w.run) + '">' + w.run + '</dd><dt>Session</dt><dd class="' + cls(w.sess) + '">' + w.sess + '</dd><dt>Owner report</dt><dd class="' + cls(w.own) + '">' + w.own + '</dd></dl>' +
+        '<div class="ws-meta">' + w.op + '</div></button>';
+    }).join('');
+    document.getElementById('ws-grid').innerHTML = html || '<p class="calc-sub">No workspaces in this filter.</p>';
+  }
+
+  function incActions(x) {
+    if (x.state === 'RESOLVED') return '';
+    var b = [];
+    if (x.state === 'OPEN') b.push('<button class="btn" type="button" data-act="ack" data-inc="' + x.id + '">Acknowledge</button>');
+    if (x.kind === 'infra') b.push('<button class="btn" type="button" data-act="assign" data-inc="' + x.id + '">Assign to infra team</button>');
+    else b.push('<button class="btn" type="button" data-act="owner" data-inc="' + x.id + '">Create owner task</button>');
+    b.push('<button class="btn" type="button" data-act="resolve" data-inc="' + x.id + '">Resolve</button>');
+    return '<div class="btn-row">' + b.join('') + '</div>';
+  }
+
+  function renderInc() {
+    var list = inc.slice().sort(function (a, b) { return (a.state === 'RESOLVED') - (b.state === 'RESOLVED') || a.sev - b.sev; });
+    document.getElementById('inc-list').innerHTML = list.map(function (x) {
+      return '<div class="inc"><span class="sev sev-' + x.sev + '">SEV ' + x.sev + '</span><div class="min0"><div class="attn-title">' + x.id + ' ' + esc(x.ws) + ': ' + esc(x.title) + '</div>' +
+        '<div class="attn-body">Source: ' + esc(x.src) + ' (simulated). Opened ' + x.opened + '.' + (x.who ? ' Assigned: ' + esc(x.who) + '.' : '') + '</div>' +
+        '<div class="inc-state">' + x.state + '</div></div>' + incActions(x) + '</div>';
+    }).join('') || '<p class="calc-sub">No incidents.</p>';
+  }
+
+  function renderDetail() {
+    var box = document.getElementById('ws-detail');
+    var w = selected && getWs(selected);
+    if (!w) { box.innerHTML = '<p class="calc-sub" style="margin:0">Select a workspace to see its status fields, event history and actions.</p>'; return; }
+    var evs = log.filter(function (l) { return l.indexOf(w.id) !== -1; });
+    var sessNote = w.sess === 'UNKNOWN' ? 'No owner confirmation and no approved feed, so the session is unknown.' : w.sess === 'OWNER_CONFIRMED' ? 'Confirmed by the profile owner (simulated).' : 'Owner has been asked to act (simulated).';
+    var its = openIncFor(w.id);
+    box.innerHTML = '<div class="detail-head"><span class="detail-title">' + w.id + '</span><span class="sim">simulated data</span></div>' +
+      '<dl class="dims" style="font-size:12.5px"><dt>Host health</dt><dd class="' + cls(w.host) + '">' + w.host + ' (host agent)</dd><dt>Runtime</dt><dd class="' + cls(w.run) + '">' + w.run + ' (host agent)</dd><dt>Member session</dt><dd class="' + cls(w.sess) + '">' + w.sess + '</dd><dt>Owner report</dt><dd class="' + cls(w.own) + '">' + w.own + '</dd><dt>Operator</dt><dd>' + w.op + '</dd></dl>' +
+      '<p class="calc-sub">' + sessNote + '</p>' +
+      (its.length ? its.map(function (x) { return '<div style="margin-top:10px"><div class="attn-title"><span class="sev sev-' + x.sev + '">SEV ' + x.sev + '</span> ' + x.id + ': ' + esc(x.title) + ' (' + x.state + ')</div><div style="margin-top:8px">' + incActions(x) + '</div></div>'; }).join('') : '<p class="calc-sub">No open incidents.</p>') +
+      '<div class="card-label" style="margin-top:14px">Event history</div>' + (evs.length ? evs.map(function (l) { return '<div class="ev">' + esc(l) + '</div>'; }).join('') : '<div class="ev">No events yet.</div>');
+  }
+
+  function renderLog() { var t = document.getElementById('audit-log'); t.value = log.join('\n'); t.scrollTop = t.scrollHeight; }
+  function renderDash() { renderStats(); renderGrid(); renderInc(); renderDetail(); renderLog(); }
+
+  function act(kind, id) {
+    var x = null; inc.forEach(function (i) { if (i.id === id) x = i; });
+    if (!x) return;
+    var w = getWs(x.ws);
+    if (kind === 'ack') { x.state = 'ACKNOWLEDGED'; addLog('Ops lead', x.id + ' acknowledged', x.ws); }
+    if (kind === 'assign') { x.state = 'ASSIGNED'; x.who = 'Infrastructure team'; addLog('Ops lead', x.id + ' assigned to infrastructure team', x.ws); }
+    if (kind === 'owner') { x.state = 'ASSIGNED'; x.who = 'Profile owner'; addLog('Ops lead', x.id + ' owner task created (nothing sent in this demo)', x.ws); }
+    if (kind === 'resolve') {
+      x.state = 'RESOLVED';
+      if (x.kind === 'infra') { w.host = 'UP'; w.run = 'RUNNING'; addLog('Infrastructure team', x.id + ' resolved, host and runtime healthy', x.ws); }
+      else { w.own = 'NONE'; w.sess = 'OWNER_CONFIRMED'; addLog('Profile owner', x.id + ' resolved, owner confirmed session', x.ws); }
+    }
+    renderDash();
+  }
+
+  document.getElementById('p-dashboard').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.act) { act(b.dataset.act, b.dataset.inc); return; }
+    if (b.dataset.ws) { selected = selected === b.dataset.ws ? null : b.dataset.ws; renderGrid(); renderDetail(); return; }
+    if (b.dataset.f) {
+      filter = b.dataset.f;
+      document.querySelectorAll('#dash-filters .chip').forEach(function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
+      renderGrid(); return;
+    }
+  });
+  document.getElementById('btn-reset').addEventListener('click', resetDemo);
+  document.getElementById('btn-inject').addEventListener('click', function () {
+    var cand = ws.filter(function (w) { return w.host === 'UP' && openIncFor(w.id).length === 0; });
+    if (!cand.length) { addLog('Demo', 'No healthy workspace left to fault. Use Reset demo.'); renderLog(); return; }
+    var w = cand[Math.floor(Math.random() * cand.length)];
+    w.host = 'DEGRADED';
+    incSeq++;
+    var t = tick();
+    inc.push({ id: 'INC-' + incSeq, ws: w.id, sev: 2, title: 'Injected host fault: disk latency high', kind: 'infra', src: 'Host agent', state: 'OPEN', who: null, opened: t });
+    log.push(t + '  Host agent  INC-' + incSeq + ' opened: injected host fault  ' + w.id + '  [SIMULATION]');
+    selected = w.id;
+    renderDash();
+  });
+  document.getElementById('btn-copy').addEventListener('click', function () {
+    var t = document.getElementById('audit-log'), msg = document.getElementById('copy-msg');
+    function fallback() { t.focus(); t.select(); msg.textContent = 'Selected. Press Ctrl+C to copy.'; }
+    try {
+      navigator.clipboard.writeText(t.value).then(function () { msg.textContent = 'Copied.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+  resetDemo();
+
+  /* ---------- Cost model ---------- */
+  var SKU = { CCX23: { vcpu: 8, ram: 32, usd: 101.49 }, CCX33: { vcpu: 8, ram: 64, usd: 162.99 }, CCX43: { vcpu: 16, ram: 64, usd: 325.49 }, CCX53: { vcpu: 32, ram: 128, usd: 629.49 } };
+  var PROXY = { none: 0, '3': 11.25, '10': 35, '25': 81.25, '50': 150, '100': 275, '250': 625, '1000': 2000, custom: null };
+  var LH_TERM = { 1: 0, 3: 0.11, 6: 0.33, 12: 0.45 };
+  var RATE = 20;
+  var BROWSER = {
+    gologin: { name: 'GoLogin', note: 'Published plans conflict between pricing page and help centre. 1 to 4 concurrent cloud launches by plan.', cloudMax: 4 },
+    multilogin: { name: 'Multilogin', note: 'Business from $26.67 a month billed yearly; price above 100 profiles not published.', cloudMax: null },
+    adspower: { name: 'AdsPower', note: 'Prices did not load from the official page; vendor quote needed.', cloudMax: null },
+    none: { name: 'Standard browser profiles', note: 'No vendor licence. Isolation handled per OS user and container on our hosts.', cloudMax: 0 }
+  };
+
+  function lhVolume(n) { if (n >= 1000) return 0.5; if (n >= 100) return 0.4; if (n >= 75) return 0.35; if (n >= 50) return 0.3; if (n >= 20) return 0.2; if (n >= 10) return 0.1; return 0; }
+  function lhMonthly(n, base, term) { return Math.round(n * base * (1 - LH_TERM[term]) * (1 - lhVolume(n)) * 100) / 100; }
+  function money(v) { return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function $(id) { return document.getElementById(id); }
+
+  function inputs() {
+    return {
+      N: +$('r-profiles').value, pct: +$('r-conc').value, U: +$('r-ops').value,
+      exec: $('s-exec').value, sku: $('s-sku').value, ram: +$('r-ram').value, cpu: +$('r-cpu').value,
+      spare: $('c-spare').checked, os: $('s-os').value, browser: $('s-browser').value, net: $('s-net').value,
+      sup: +$('r-sup').value, lh: $('c-lh').checked, lhBase: +$('s-lhplan').value, lhTerm: +$('s-lhterm').value, lhCount: $('s-lhcount').value
+    };
+  }
+
+  function model(p, N) {
+    var C = Math.max(1, Math.ceil(N * p.pct / 100));
+    var lines = [], warn = [];
+    var s = SKU[p.sku];
+    var hosts = 0;
+    if (p.exec === 'self') {
+      var byRam = Math.ceil(C * p.ram / (s.ram - 4));
+      var byCpu = Math.ceil(C * p.cpu / (s.vcpu - 1));
+      hosts = Math.max(1, byRam, byCpu) + (p.spare ? 1 : 0);
+      lines.push({ k: 'host', n: 'Hosting, ' + hosts + ' x ' + p.sku + (p.spare ? ' (incl. 1 spare)' : ''), v: Math.round(hosts * s.usd * 100) / 100, t: 'pub', note: 'Limited by ' + (byCpu > byRam ? 'CPU' : 'RAM') + ' assumption. Excludes IPv4, VAT and backups.' });
+    } else {
+      lines.push({ k: 'host', n: 'Vendor cloud runtime', v: null, t: 'quote', note: 'Cloud launches and cloud hours are priced by the vendor plan.' });
+      var cm = BROWSER[p.browser].cloudMax;
+      if (cm === 0) warn.push('Standard browser profiles have no vendor cloud. Choose client hosted servers.');
+      else if (cm && C > cm) warn.push('Capacity mismatch: published ' + BROWSER[p.browser].name + ' plans allow at most ' + cm + ' concurrent cloud launches, but C = ' + C + '. Use client hosted servers or ask the vendor for a custom agreement.');
+      else if (cm === null) warn.push(BROWSER[p.browser].name + ' does not publish cloud concurrency limits. Confirm C = ' + C + ' with the vendor.');
+    }
+    lines.push({ k: 'bk', n: 'Backups and IPv4', v: null, t: 'quote', note: 'Hetzner prices backups per instance and IPv4 separately; confirmed at order.' });
+    lines.push({ k: 'br', n: 'Workspace software: ' + BROWSER[p.browser].name, v: p.browser === 'none' ? 0 : null, t: p.browser === 'none' ? 'ass' : 'quote', note: BROWSER[p.browser].note });
+    if (p.os === 'windows') lines.push({ k: 'os', n: 'Windows Server and remote desktop user licences (U = ' + p.U + ')', v: null, t: 'quote', note: 'Per host and per user. Licensing route confirmed in pilot.' });
+    else lines.push({ k: 'os', n: 'Operating system licence (Linux)', v: 0, t: 'pub', note: '' });
+    lines.push({ k: 'id', n: 'SSO with MFA for ' + p.U + ' users', v: null, t: 'quote', note: 'Often covered by an existing Google Workspace or Microsoft plan. Confirmed on Day 1.' });
+    var pv = PROXY[p.net];
+    lines.push({ k: 'net', n: p.net === 'none' ? 'Proxy: none (secure baseline)' : p.net === 'custom' ? 'Proxy: custom volume or static IPs' : 'Proxy: Decodo ' + p.net + ' GB bundle', v: pv, t: pv === null ? 'quote' : (pv === 0 ? 'ass' : 'pub'), note: pv ? 'Plus VAT.' : '' });
+    lines.push({ k: 'mon', n: 'Monitoring stack', v: 0, t: 'ass', note: 'Open source on existing hosts; storage covered by host sizing.' });
+    lines.push({ k: 'sup', n: 'Support, ' + p.sup + ' hours at $' + RATE, v: p.sup * RATE, t: 'rate', note: '' });
+    if (p.lh) {
+      var n = p.lhCount === 'C' ? C : N;
+      var v = lhMonthly(n, p.lhBase, p.lhTerm);
+      lines.push({ k: 'lh', n: 'Linked Helper, ' + n + ' licences (optional)', v: v, t: 'pub', note: (p.lhTerm > 1 ? 'Monthly equivalent of ' + p.lhTerm + ' months paid upfront. ' : 'Billed monthly. ') + 'Volume discount ' + Math.round(lhVolume(n) * 100) + '%.' });
+    }
+    var sum = 0, open = 0;
+    lines.forEach(function (l) { if (l.v === null) open++; else sum += l.v; });
+    return { C: C, hosts: hosts, lines: lines, sum: Math.round(sum * 100) / 100, open: open, warn: warn };
+  }
+
+  var TAGS = { pub: ['t-pub', 'Published'], ass: ['t-ass', 'Assumption'], quote: ['t-quote', 'Quote'], rate: ['t-rate', 'Our rate'] };
+
+  function calc() {
+    var p = inputs();
+    $('v-profiles').textContent = p.N;
+    $('v-conc').textContent = p.pct + '%';
+    $('v-ops').textContent = p.U;
+    $('v-ram').textContent = p.ram;
+    $('v-cpu').textContent = p.cpu;
+    $('v-sup').textContent = p.sup;
+    $('o-n').textContent = p.N;
+    var self = p.exec === 'self';
+    ['row-sku', 'row-ram', 'row-cpu', 'row-spare'].forEach(function (id) { $(id).hidden = !self; });
+    $('lh-opts').hidden = !p.lh;
+
+    var m = model(p, p.N);
+    $('v-conc-n').textContent = 'C = ' + m.C + ' workspaces. Assumption until measured.';
+    $('cost-lines').innerHTML = m.lines.map(function (l) {
+      var tg = TAGS[l.t];
+      return '<div class="cl"><span class="cl-n">' + esc(l.n) + ' <span class="tag ' + tg[0] + '">' + tg[1] + '</span></span><span class="cl-p">' + (l.v === null ? 'Quote' : money(l.v)) + '</span>' + (l.note ? '<span class="cl-note">' + esc(l.note) + '</span>' : '') + '</div>';
+    }).join('');
+    $('o-sum').textContent = money(m.sum);
+    $('o-open').textContent = m.open ? 'Not a total: ' + m.open + ' item' + (m.open > 1 ? 's' : '') + ' still need a vendor quote and are left out of the sum.' : 'All items priced.';
+    $('o-warn').innerHTML = m.warn.map(function (w) { return '<div class="warn-box">' + esc(w) + '</div>'; }).join('');
+
+    var sc = [100, 250, 500].map(function (n) { return model(p, n); });
+    var rows = [
+      ['Active at once (C)', function (r) { return String(r.C); }],
+      ['Hosts', function (r) { return self ? String(r.hosts) : 'Vendor'; }],
+      ['Hosting', function (r) { return lineVal(r, 'host'); }],
+      ['Proxy', function (r) { return lineVal(r, 'net'); }],
+      ['Support', function (r) { return lineVal(r, 'sup'); }]
+    ];
+    if (p.lh) rows.push(['Linked Helper (optional)', function (r) { return lineVal(r, 'lh'); }]);
+    rows.push(['Sum of priced items', function (r) { return '<strong>' + money(r.sum) + '</strong>'; }]);
+    rows.push(['Items awaiting quote', function (r) { return String(r.open); }]);
+    $('scen-body').innerHTML = rows.map(function (row) {
+      return '<tr><td>' + row[0] + '</td>' + sc.map(function (r) { return '<td class="num">' + row[1](r) + '</td>'; }).join('') + '</tr>';
+    }).join('');
+  }
+  function lineVal(r, k) { for (var i = 0; i < r.lines.length; i++) if (r.lines[i].k === k) return r.lines[i].v === null ? 'Quote' : money(r.lines[i].v); return '-'; }
+
+  ['r-profiles', 'r-conc', 'r-ops', 'r-ram', 'r-cpu', 'r-sup'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  ['s-exec', 's-sku', 's-os', 's-browser', 's-net', 's-lhplan', 's-lhterm', 's-lhcount', 'c-spare', 'c-lh'].forEach(function (id) { $(id).addEventListener('change', calc); });
   calc();
-}
 
-const rP = document.getElementById('r-profiles');
-const rC = document.getElementById('r-conc');
-const rR = document.getElementById('r-ram');
-const sB = document.getElementById('s-browser');
-const sL = document.getElementById('s-lh');
-const rG = document.getElementById('r-gb');
-
-function calc() {
-  const N = parseInt(rP.value);
-  const cp = parseInt(rC.value);
-  const C = Math.ceil(N * cp / 100);
-  const ramPerWS = parseFloat(rR.value);
-  const gb = parseInt(rG.value);
-
-  document.getElementById('v-profiles').textContent = N;
-  document.getElementById('v-conc').textContent = cp + '%';
-  document.getElementById('v-ram').textContent = ramPerWS;
-  document.getElementById('v-gb').textContent = gb;
-
-  const usableRAM = 60;
-  const servers = Math.max(1, Math.ceil(C * ramPerWS / usableRAM));
-  const hosting = Math.round(servers * 325.49);
-
-  let browser = 0;
-  if (sB.value === 'gologin') {
-    if (N <= 100) browser = 19.50;
-    else if (N <= 300) browser = 49.50;
-    else browser = 89.50;
-  } else if (sB.value === 'multilogin') {
-    browser = Math.ceil(N / 100) * 26.67;
-  } else {
-    browser = Math.ceil(N / 100) * 28.80;
-  }
-
-  const lhCount = sL.value === 'concurrent' ? C : N;
-  const lh = Math.round(lhCount * 14.85);
-
-  let proxy = 0;
-  if (proxyOn) {
-    let rate;
-    if (gb <= 25) rate = 3.25;
-    else if (gb <= 50) rate = 3.00;
-    else if (gb <= 100) rate = 2.75;
-    else if (gb <= 250) rate = 2.50;
-    else rate = 2.00;
-    proxy = Math.round(gb * rate);
-  }
-
-  let monitor = 50;
-  if (N >= 250) monitor = 75;
-  if (N >= 500) monitor = 100;
-
-  const total = hosting + browser + lh + proxy + monitor;
-
-  document.getElementById('c-host').textContent = '$' + hosting.toLocaleString() + ' (' + servers + ' server' + (servers > 1 ? 's' : '') + ')';
-  document.getElementById('c-brow').textContent = '$' + browser.toLocaleString();
-  document.getElementById('c-lh').textContent = '$' + lh.toLocaleString() + ' (' + lhCount + ' lic)';
-  document.getElementById('c-prx').textContent = proxyOn ? '$' + proxy.toLocaleString() + ' (' + gb + ' GB)' : '$0 (disabled)';
-  document.getElementById('c-mon').textContent = '$' + monitor;
-  document.getElementById('c-total').textContent = '$' + total.toLocaleString() + '/mo';
-}
-
-[rP, rC, rR, rG].forEach(r => r.addEventListener('input', calc));
-[sB, sL].forEach(s => s.addEventListener('change', calc));
-calc();
+  /* Self check for reviewers: run __costChecks() in the console */
+  window.__costChecks = function () {
+    return [
+      ['10 Pro, 12 months', lhMonthly(10, 45, 12), 222.75],
+      ['20 Pro, 12 months', lhMonthly(20, 45, 12), 396],
+      ['50 Pro, 12 months', lhMonthly(50, 45, 12), 866.25],
+      ['75 Pro, 12 months', lhMonthly(75, 45, 12), 1206.56],
+      ['100 Pro, 12 months', lhMonthly(100, 45, 12), 1485],
+      ['20 Standard, 12 months', lhMonthly(20, 15, 12), 132],
+      ['20 Pro, monthly', lhMonthly(20, 45, 1), 720]
+    ].map(function (c) { return { test: c[0], got: c[1], want: c[2], pass: Math.abs(c[1] - c[2]) < 0.006 }; });
+  };
+})();
 </script>
 </body>
 </html>
